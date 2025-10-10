@@ -1,0 +1,50 @@
+\documentclass[12pt]{article}
+
+\usepackage{hcmus-report-template}
+
+% Disable indentation on new paragraphs
+\setlength{\parindent}{0pt}
+
+% Line spacing 1.5
+\renewcommand{\baselinestretch}{1.5}
+
+% Define custom commands
+\DeclarePairedDelimiter\bra{\langle}{\rvert}
+\DeclarePairedDelimiter\ket{\lvert}{\rangle}
+\DeclarePairedDelimiterX\braket[2]{\langle}{\rangle}{#1\,\delimsize\vert\,\mathopen{}#2}
+
+
+% Define course name, report name and report title.
+\newcommand{\coursename}{Môn Học Gì Đấy}
+\newcommand{\reportname}{Tên Báo Cáo Gì Đấy}
+\newcommand{\reporttitle}{Báo cáo Bài Tập Gì Đấy}
+
+\newcommand{\studentname}{Quan, Tran Hoang (19120338)\\meadoge(19120000)\\Hwang S. Wan (19120000)}
+\newcommand{\teachername}{GS. TS. Nguyễn Văn Hướng Dẫn}
+
+% Header
+\lhead{\reporttitle}
+\rhead{
+Trường Đại học Khoa học Tự nhiên - ĐHQG HCM\\
+\coursename
+}
+
+\begin{document}
+
+\pagenumbering{roman}
+\input{content/title.tex}
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\input{content/section1.tex}
+\input{content/section2.tex}
+\input{content/section3.tex}
+\input{content/section4.tex}
+\input{content/section5.tex}
+\input{content/section6.tex}
+\input{content/section7.tex}
+\input{content/section8.tex}
+
+
+\end{document}

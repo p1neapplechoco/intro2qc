@@ -1,0 +1,149 @@
+\section{Bài 1}
+
+\subsection{Đề bài}
+
+Cho $x = e^{i \frac{\pi}{3}}, y = 2e^{i \frac{\pi}{6}}$.
+
+\begin{itemize}
+    \item[(a)] Vẽ hình minh hoạ $x, y$ trên mặt phẳng phức.
+    \item[(b)] Tìm dạng đại số và dạng cực của  $x, y$.
+    \item[(c)] Tính $\text{Re}(x), \text{Im}(y), |x|, \arg x$.
+    \item[(d)] Tính $\overline{x}, -x, x^{-1}$.
+    \item[(e)] Tính $x + y, x - y, xy, \frac{x}{y}, \frac{y}{x}$.  
+    \item[(f)] Tính $x^4$ và $x^n, n \in \mathbb{Z}$.
+    \item[(g)] Tính $\sqrt[4]{x}$ và $\sqrt[n]{x}, n \in \mathbb{N^+}$.
+\end{itemize}
+
+\subsection{Lời giải}
+
+\subsubsection{Phần (a)}
+
+Ta có:
+\[
+x = e^{i \frac{\pi}{3}} = \cos \frac{\pi}{3} + i \sin \frac{\pi}{3} = \frac{1}{2} + i \frac{\sqrt{3}}{2}
+\]
+\[
+y = 2e^{i \frac{\pi}{6}} = 2\left(\cos \frac{\pi}{6} + i \sin \frac{\pi}{6}\right) = 2\left(\frac{\sqrt{3}}{2} + i \frac{1}{2}\right) = \sqrt{3} + i
+\]
+
+Mặt phẳng phức:
+
+\begin{center}
+\begin{tikzpicture}
+
+    \coordinate (O) at (0,0);
+    \coordinate (x) at ({1/2}, {sqrt(3)/2});
+    \coordinate (y) at ({sqrt(3)}, {1});
+
+    \fill (O) circle (1.5pt) node[anchor=north east] {$O$};
+    \draw[black, thick, ->] (0,-2.5) -- (0,2.5) node[anchor=south east] {Im};
+    \draw[black, thick, ->] (-2.5,0) -- (2.5,0) node[anchor=north west] {Re};
+
+    \filldraw[black] (x) circle (2pt) node[anchor=north west] {$x$};
+    \filldraw[black] (y) circle (2pt) node[anchor=north west] {$y$};
+    \filldraw[black] (0,{sqrt(3)/2}) circle (1pt) node[anchor=east, xshift=-2pt, yshift=-4pt] {$\frac{\sqrt{3}}{2}$};
+    \filldraw[black] ({1/2}, {0}) circle (1pt) node[anchor=north] {$\frac{1}{2}$};
+    \filldraw[black] (0,1) circle (1pt) node[anchor=east, xshift=-2pt, yshift= 5pt] {$1$};
+    \filldraw[black] ({sqrt(3)}, {0}) circle (1pt) node[anchor=north] {$\sqrt{3}$};
+
+    \draw[black, dashed] (x) -- ({1/2}, {0});
+    \draw[black, dashed] (x) -- (0, {sqrt(3)/2});
+    \draw[black, dashed] (y) -- (0,1);
+    \draw[black, dashed] (y) -- ({sqrt(3)}, {0});
+
+\end{tikzpicture}
+\end{center}
+
+
+\subsubsection{Phần (b)}
+
+\begin{itemize}
+    \item Dạng cực:
+    \begin{align*}
+        x &= e^{i \frac{\pi}{3}} = \cos \frac{\pi}{3} + i \sin \frac{\pi}{3} \\
+        y &= 2e^{i \frac{\pi}{6}} = 2\left(\cos \frac{\pi}{6} + i \sin \frac{\pi}{6}\right)
+    \end{align*}
+
+    \item Dạng đại số:
+    \begin{align*}
+        x &= \cos \frac{\pi}{3} + i \sin \frac{\pi}{3} = \frac{1}{2} + i \frac{\sqrt{3}}{2} \\
+        y &= 2\left(\cos \frac{\pi}{6} + i \sin \frac{\pi}{6}\right) = 2\left(\frac{\sqrt{3}}{2} + i \frac{1}{2}\right) = \sqrt{3} + i
+    \end{align*}
+\end{itemize}
+
+\subsubsection{Phần (c)}
+Ta có:
+\[
+x = \frac{1}{2} + i \frac{\sqrt{3}}{2}
+\]
+\[
+\text{Re}(x) = \frac{1}{2} 
+\]
+\[
+\text{Im}(x) = \frac{\sqrt{3}}{2} 
+\]
+\[
+|x| = \sqrt{\left(\frac{1}{2}\right)^2 + \left(\frac{\sqrt{3}}{2} \right)^2} = \sqrt{\frac{1}{4} + \frac{3}{4}} = \sqrt{1} = 1
+\]
+\[
+\arg x = \arctan{\frac{\frac{\sqrt{3}}{2}}{\frac{1}{2}}} = \arctan{\sqrt{3}} = \frac{\pi}{3}
+\]
+
+\subsubsection{Phần (d)}
+Ta có:
+\[
+\overline{x} = \overline{\frac{1}{2} + i \frac{\sqrt{3}}{2}} = \frac{1}{2} - i \frac{\sqrt{3}}{2}
+\]
+\[
+-x = - \left(\frac{1}{2} + i \frac{\sqrt{3}}{2}\right) = -\frac{1}{2} - i \frac{\sqrt{3}}{2}
+\]
+\[
+x^{-1} = \frac{1}{x} = \frac{\overline{x}}{x \overline{x}} = \frac{\overline{x}}{|x|^2} = \frac{\frac{1}{2} - i \frac{\sqrt{3}}{2}}{(1)^2} = \frac{1}{2} - i \frac{\sqrt{3}}{2}
+\]
+
+\subsubsection{Phần (e)}
+Ta có:
+\[
+x + y = \left(\frac{1}{2} + i \frac{\sqrt{3}}{2}\right) + \left(\sqrt{3} + i\right) = \left(\frac{1}{2} + \sqrt{3}\right) + i \left( \frac{\sqrt{3}}{2} + \sqrt{3} \right)
+\]
+\[
+x - y = \left(\frac{1}{2} + i \frac{\sqrt{3}}{2}\right) - \left(\sqrt{3} + i\right) = \left(\frac{1}{2} - \sqrt{3}\right) + i \left( \frac{\sqrt{3}}{2} - \sqrt{3} \right)
+\]
+\[
+xy = \left(\frac{1}{2} + i \frac{\sqrt{3}}{2}\right)\left(\sqrt{3} + i\right) = \left(\frac{1}{2} \times \sqrt{3} - \frac{\sqrt{3}}{2} \right) + i \left(\frac{1}{2} + \frac{\sqrt{3}}{2} \times \sqrt{3} \right) = 0 + i (2) = 2i
+\]
+
+\[
+\frac{x}{y} = \frac{x \overline{y}}{|y|^2} = \frac{\left(\frac{1}{2} + i \frac{\sqrt{3}}{2}\right)\left(\sqrt{3} - i\right)}{\left(\sqrt{\sqrt{3}^2 + 1^2}\right)^2} = \frac{\left(\frac{1}{2} \times \sqrt{3} + \frac{\sqrt{3}}{2} \right) + i \left(-\frac{1}{2} + \frac{\sqrt{3}}{2} \times \sqrt{3} \right)}{(\sqrt{4})^2} = \frac{\sqrt{3} + i (1)}{4} =\frac{\sqrt{3}}{4} + \frac{1}{4}i
+\]
+
+\[
+\frac{y}{x} = \left(\frac{x}{y}\right)^{-1} = \left(\frac{\sqrt{3}}{4} + \frac{1}{4}i\right)^{-1} = \frac{\frac{\sqrt{3}}{4} - \frac{1}{4}i}{\left|\frac{\sqrt{3}}{4} + \frac{1}{4}i\right|^2} = \frac{\frac{\sqrt{3}}{4} - \frac{1}{4}i}{\frac{1}{4}} = \sqrt{3} - i 
+\]
+
+\subsubsection{Phần (f)}
+Ta có:
+\[
+x = e^{i \frac{\pi}{3}} \Rightarrow x^4 = \left(e^{i \frac{\pi}{3}}\right)^4 = e^{i \frac{4 \pi}{3}} = \cos \frac{4\pi}{3} + i \sin \frac{4\pi}{3} = -\frac{1}{2} - \frac{\sqrt{3}}{2} i
+\]
+Tương tự, với $n \in \mathbb{Z}$:
+\[
+x^n = \left(e^{i \frac{\pi}{3}}\right)^n = e^{i \frac{n \pi}{3}} = \cos \frac{n\pi}{3} + i \sin \frac{n\pi}{3}
+\]
+
+\subsubsection{Phần (g)}
+Ta có:
+\[
+\sqrt[4]{x} = x^{\frac{1}{4}} = \left(e^{i \frac{\pi}{3}}\right)^{\frac{1}{4}}  = e^{i \frac{\pi}{12}} = \cos \frac{\pi}{12} + i \sin \frac{\pi}{12} = \frac{\sqrt{6} + \sqrt{2}}{4} + \frac{\sqrt{6} - \sqrt{2}}{4} i
+\]
+Tương tự, với $n \in \mathbb{N^+}$:
+\[
+\sqrt[n]{x} = x^{\frac{1}{n}} = \left(e^{i \frac{\pi}{3}}\right)^{\frac{1}{n}}  = e^{i \frac{\pi}{3n}} = \cos \frac{\pi}{3n} + i \sin \frac{\pi}{3n}
+\]
+
+
+
+
+
+
+
