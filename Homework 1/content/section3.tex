@@ -1,20 +1,383 @@
 \section{Bài 3}
 
-\subsection{Đề bài}compl
+\subsection{Đề bài}
 Cho $\ket{\phi} = \frac{\sqrt{3}}{2} \ket{0} + \frac{1}{2} \ket{1}, \ket{\psi} = \frac{2}{3} \ket{0} + \frac{1 - 2i}{3} \ket{1}$.
 
 \begin{itemize}
-    \item[(a)] Vẽ hình minh hoạ $x, y$ trên mặt phẳng phức.
-    \item[(b)] Tìm dạng đại số và dạng cực của  $x, y$.
-    \item[(c)] Tính $\text{Re}(x), \text{Im}(y), |x|, \arg x$.
-    \item[(d)] Tính $\overline{x}, -x, x^{-1}$.
-    \item[(e)] Tính $x + y, x - y, xy, \frac{x}{y}, \frac{y}{x}$.  
-    \item[(f)] Tính $x^4$ và $x^n, n \in \mathbb{Z}$.
-    \item[(g)] Tính $\sqrt[4]{x}$ và $\sqrt[n]{x}, n \in \mathbb{N^+}$.
+    \item[(a)] Tính $\bra{\phi}$ và $\bra{\psi}$.
+    \item[(b)] Tính $\braket{\phi}{\psi}$ và $\braket{\psi}{\phi}$.
+    \item[(c)] Tính $\ket{\phi}\bra{\psi}$ và $\ket{\psi}\bra{\phi}$.
+    \item[(d)] Tính $\bra{\phi}\bra{\psi}$ và $\bra{\psi}\bra{\phi}$.
+    \item[(e)] Tính $\|{\phi}\|$ và $\|{\psi}\|$.
+    \item[(f)] Tính góc giữa $\bra{\phi}$ và $\bra{\psi}$.
+    \item[(g)] Tính $\operatorname{proj}_{\ket{\psi}}{\ket{\phi}}$ và $\operatorname{proj}_{\ket{\phi}}{\ket{\psi}}$.
+    \item[(h)] Chuẩn hoá $\operatorname{proj}_{\ket{\psi}}{\ket{\phi}}$ và $\operatorname{proj}_{\ket{\phi}}{\ket{\psi}}$.
+    \item[(i)] Tìm toạ độ của $\ket{\phi}$ và $\ket{\psi}$ trong các cơ sở
+    \[
+    B_Z = \{\ket{0}, \ket{1}\}, B_X = \{\ket{+}, \ket{-}\}, B_Y = \{\ket{i}, \ket{-i}\}. 
+    \]
+    \item[(j)] Cho $\ket{a} = \frac{\sqrt{3}}{2} \ket{0} + \frac{i}{2} \ket{1}, \ket{b} = \frac{i}{2} \ket{0} + \frac{\sqrt{3}}{2} \ket{1}, $ chứng minh $B = \{a, b\}$ là một cơ sở trực chuẩn của $\mathbb{C}^2$ và tìm toạ độ của $\ket{\phi}, \ket{\psi}$ theo $B$.
 \end{itemize}
 
 \subsection{Lời giải}
 \subsubsection{Phần (a)}
+Ta có:
+\[
+\bra{\phi} = \ket{\phi}^\dagger =\left( \frac{\sqrt{3}}{2} 
+\begin{bmatrix}
+    1 \\ 
+    0 
+\end{bmatrix}
++
+\frac{1}{2}
+\begin{bmatrix}
+    0 \\
+    1
+\end{bmatrix}
+\right)^\dagger =
+\left(
+    \begin{bmatrix}
+        \frac{\sqrt{3}}{2} \\ 
+        0 
+    \end{bmatrix}
+    +
+    \begin{bmatrix}
+        0 \\
+        \frac{1}{2}
+    \end{bmatrix}
+\right)^\dagger =
+\begin{bmatrix}
+    \frac{\sqrt{3}}{2} \\
+    \frac{1}{2}
+\end{bmatrix}^\dagger =
+\begin{bmatrix}
+    \dfrac{\sqrt{3}}{2} & \dfrac{1}{2}
+\end{bmatrix}
+\]
+\[
+\bra{\psi} = \ket{\psi}^\dagger =\left( \frac{2}{3} 
+\begin{bmatrix}
+    1 \\ 
+    0 
+\end{bmatrix}
++
+\frac{1 - 2i}{3}
+\begin{bmatrix}
+    0 \\
+    1
+\end{bmatrix}
+\right)^\dagger =
+\left(
+    \begin{bmatrix}
+        \frac{2}{3} \\ 
+        0 
+    \end{bmatrix}
+    +
+    \begin{bmatrix}
+        0 \\
+        \frac{1}{3}
+    \end{bmatrix}
+\right)^\dagger =
+\begin{bmatrix}
+    \frac{2}{3} \\
+    \frac{1 - 2i}{3}
+\end{bmatrix}^\dagger =
+\begin{bmatrix}
+    \dfrac{2}{3} & \dfrac{1 + 2i}{3}
+\end{bmatrix}
+\]
+
 \subsubsection{Phần (b)}
+Ta có:
+\[
+\braket{\phi}{\psi} = \bra{\phi} \ket{\psi} = 
+\begin{bmatrix}
+    \dfrac{\sqrt{3}}{2} & \dfrac{1}{2}
+\end{bmatrix}
+\begin{bmatrix}
+    \frac{2}{3} \\
+    \frac{1 - 2i}{3}
+\end{bmatrix}
+=
+\frac{\sqrt{3}}{2} \times \frac{2}{3} + \frac{1}{2} \times \frac{1 - 2i}{3}
+= \frac{1 + 2\sqrt{3}}{6} - \frac{1}{3}i
+\]
+\[
+\braket{\psi}{\phi} = \bra{\psi} \ket{\phi} = 
+\begin{bmatrix}
+    \dfrac{2}{3} & \dfrac{1 + 2i}{3}
+\end{bmatrix}
+\begin{bmatrix}
+    \frac{\sqrt{3}}{2} \\
+    \frac{1}{2}
+\end{bmatrix}
+=
+\frac{2}{3} \times \frac{\sqrt{3}}{2} + \frac{1 + 2i}{3} \times \frac{1}{2}
+= \frac{1 + 2\sqrt{3}}{6} + \frac{1}{3}i
+\]
 \subsubsection{Phần (c)}
+Ta có:
+\[
+\ket{\phi}\bra{\psi} = 
+\begin{bmatrix}
+    \frac{\sqrt{3}}{2} \\
+    \frac{1}{2}
+\end{bmatrix}
+\begin{bmatrix}
+    \dfrac{2}{3} & \dfrac{1 + 2i}{3}
+\end{bmatrix} = 
+\begin{bmatrix}
+    \frac{\sqrt{3}}{2} \times \frac{2}{3} & \frac{\sqrt{3}}{2} \times \frac{1 + 2i}{3} \\
+    \frac1{2} \times \frac{2}{3} & \frac{1}{2} \times \frac{1 + 2i}{3}
+\end{bmatrix} =
+\begin{bmatrix}
+    \frac{\sqrt{3}}{3} & \frac{\sqrt{3}}{6} + \frac{\sqrt{3}}{3}i \\
+    \frac{1}{3} & \frac{1}{6} + \frac{1}{3}i
+\end{bmatrix}
+\]
+\[
+\ket{\psi}\bra{\phi} = 
+\left(\ket{\phi}\bra{\psi}\right)^\dagger =
+\begin{bmatrix}
+    \frac{\sqrt{3}}{3} & \frac{\sqrt{3}}{6} + \frac{\sqrt{3}}{3}i \\
+    \frac{1}{3} & \frac{1}{6} + \frac{1}{3}i
+\end{bmatrix}^\dagger =
+\begin{bmatrix}
+    \frac{\sqrt{3}}{3} & \frac{1}{3} \\
+    \frac{\sqrt{3}}{6} - \frac{\sqrt{3}}{3}i & \frac{1}{6} - \frac{1}{3}i
+\end{bmatrix}
+\]
+
 \subsubsection{Phần (d)}
+Ta có:
+\[
+\ket{\phi}\ket{\psi} = 
+\begin{bmatrix}
+    \frac{\sqrt{3}}{2} \\
+    \frac{1}{2}
+\end{bmatrix}
+\begin{bmatrix}
+    \frac{2}{3} \\
+    \frac{1 + 2i}{3}
+\end{bmatrix} = 
+\begin{bmatrix}
+    \frac{\sqrt{3}}{2} \times \frac{2}{3} \\
+    \frac{\sqrt{3}}{2} \times \frac{1 + 2i}{3} \\
+    \frac{1}{2} \times \frac{2}{3} \\
+    \frac{1}{2} \times \frac{1 + 2i}{3} 
+\end{bmatrix} =
+\begin{bmatrix}
+    \frac{\sqrt{3}}{3} \\
+    \frac{\sqrt{3}}{6} + \frac{\sqrt{3}}{3}i \\
+    \frac{1}{3} \\
+    \frac{1}{6} + \frac{1}{3}i
+\end{bmatrix} 
+\]
+\[
+\ket{\psi}\ket{\phi} = 
+\begin{bmatrix}
+    \frac{2}{3} \\
+    \frac{1 + 2i}{3}
+\end{bmatrix} 
+\begin{bmatrix}
+    \frac{\sqrt{3}}{2} \\
+    \frac{1}{2}
+\end{bmatrix} =
+\begin{bmatrix}
+    \frac{2}{3} \times \frac{\sqrt{3}}{2} \\
+    \frac{2}{3} \times \frac{1}{2} \\
+    \frac{1 + 2i}{3} \times \frac{\sqrt{3}}{2} \\
+    \frac{1 + 2i}{3} \times \frac{1}{2} 
+\end{bmatrix} =
+\begin{bmatrix}
+    \frac{\sqrt{3}}{3} \\
+    \frac{1}{3} \\
+    \frac{\sqrt{3}}{6} + \frac{\sqrt{3}}{3}i \\
+    \frac{1}{6} + \frac{1}{3}i
+\end{bmatrix} 
+\]
+
+\subsubsection{Phần (e)}
+Ta có:
+\[
+\|\phi\| = \sqrt{\left|\frac{\sqrt{3}}{2}\right|^2 + \left|\frac{1}{2}\right|^2} = \sqrt{\frac{3}{4} +\frac{1}{4}} = \sqrt{1} = 1
+\]
+\[
+\|\psi\| = \sqrt{\left|\frac{2}{3}\right|^2 + \left|\frac{1 + 2i}{3}\right|^2} = \sqrt{\frac{4}{9} +\frac{5}{9}} = \sqrt{1} = 1
+\]
+
+\subsubsection{Phần (f)}
+Gọi $\theta$ là góc giữa $\ket{\phi}$ và $\ket{\psi}$, ta có:
+\[
+\cos \theta = \frac{\left| \langle \phi, \psi \rangle \right|}{\left| \phi \right| \left|\psi \right|} = \frac{\left| \braket{\phi}{\psi} \right|}{\| \phi \| \|\psi \|}
+\]
+\[
+\Rightarrow \theta = \cos^{-1} \frac{\left| \braket{\phi}{\psi} \right|}{\| \phi \| \|\psi \|} = \cos^{-1} \frac{\left| \frac{1 + 2\sqrt{3}}{6} - \frac{1}{3}i\right|}{1 \times 1} = \cos^{-1} \sqrt{\left(\frac{1 + 2\sqrt{3}}{6}\right)^2 + \left(\frac{1}{3}\right)^2} = \cos^{-1} \sqrt{\frac{17 + 4\sqrt{3}}{36}}
+\]
+
+\subsubsection{Phần (g)}
+Ta có:
+\[
+\operatorname{proj}_{\ket{\psi}}{\ket{\phi}} = \frac{\braket{\psi}{\phi}}{\|\ket{\psi}\|^2}\ket{\psi} = \frac{\frac{1 + 2\sqrt{3}}{6} + \frac{1}{3}i}{1} 
+\begin{bmatrix}
+    \frac{2}{3} \\
+    \frac{1 - 2i}{3}
+\end{bmatrix} =
+\begin{bmatrix}
+    \frac{1 + 2\sqrt{6}}{9} + \frac{2}{9}i \\
+    \frac{5 + 2\sqrt{6}}{18} - \frac{2 + 2\sqrt{6}}{9} i
+\end{bmatrix}
+\]
+
+\[
+\operatorname{proj}_{\ket{\phi}}{\ket{\psi}} = \frac{\braket{\phi}{\psi}}{\|\ket{\phi}\|^2}\ket{\phi} = \frac{\frac{1 + 2\sqrt{3}}{6} - \frac{1}{3}i}{1} 
+\begin{bmatrix}
+    \frac{\sqrt{3}}{2} \\
+    \frac{1}{2}
+\end{bmatrix} =
+\begin{bmatrix}
+    \frac{\sqrt{3} + 6\sqrt{2}}{12} - \frac{\sqrt{3}}{6}i \\
+    \frac{1 + 2\sqrt{6}}{12} - \frac{1}{6} i
+\end{bmatrix}
+\]
+\subsubsection{Phần (h)}
+Gọi $e_1, e_2$ lần lượt là vector chuẩn hoá của $\operatorname{proj}_{\ket{\psi}}{\ket{\phi}}, \operatorname{proj}_{\ket{\phi}}{\ket{\psi}}$, ta có:
+\begin{align*}
+    e_1 &= \operatorname{proj}_{\ket{\psi}}{\ket{\phi}} \frac{1}{\|\operatorname{proj}_{\ket{\psi}}{\ket{\phi}}\|} \\
+    &= 
+    \begin{bmatrix}
+        \frac{1 + 2\sqrt{6}}{9} - \frac{2}{9}i \\
+        \frac{5 + 2\sqrt{6}}{18} - \frac{2 + 2\sqrt{6}}{9} i
+    \end{bmatrix}
+    \frac{1}{\sqrt{\left|\frac{1 + 2\sqrt{6}}{9} - \frac{2}{9}i \right|^2 + \left|\frac{5 + 2\sqrt{6}}{18} - \frac{2 + 2\sqrt{6}}{9} i\right|^2}} \\
+    &= 
+    \begin{bmatrix}
+        \frac{1 + 2\sqrt{6}}{9} - \frac{2}{9}i \\
+        \frac{5 + 2\sqrt{6}}{18} - \frac{2 + 2\sqrt{6}}{9} i
+    \end{bmatrix}
+    \frac{1}{\left(\frac{1 + 2\sqrt{6}}{9}\right)^2 + \left(\frac{2}{9}\right)^2 + \left(\frac{5 + 2\sqrt{6}}{18}\right)^2 + \left(\frac{2 + 2\sqrt{6}}{9}\right)^2}
+\end{align*}
+
+\begin{align*}
+    e_2 &= \operatorname{proj}_{\ket{\phi}}{\ket{\psi}} \frac{1}{\|\operatorname{proj}_{\ket{\phi}}{\ket{\psi}}\|} \\
+    &= 
+    \begin{bmatrix}
+        \frac{\sqrt{3} + 6\sqrt{2}}{12} - \frac{\sqrt{3}}{6}i \\
+        \frac{1 + 2\sqrt{6}}{12} - \frac{1}{6} i
+    \end{bmatrix}
+    \frac{1}{\sqrt{\left|\frac{\sqrt{3} + 6\sqrt{2}}{12} - \frac{\sqrt{3}}{6}i \right|^2 + \left|\frac{1 + 2\sqrt{6}}{12} - \frac{1}{6} i\right|^2}} \\
+    &= 
+    \begin{bmatrix}
+        \frac{\sqrt{3} + 6\sqrt{2}}{12} - \frac{\sqrt{3}}{6}i \\
+        \frac{1 + 2\sqrt{6}}{12} - \frac{1}{6} i
+    \end{bmatrix}
+    \frac{1}{\left(\frac{\sqrt{3} + 6\sqrt{2}}{12}\right)^2 + \left(\frac{\sqrt{3}}{6}\right)^2 + \left(\frac{1 + 2\sqrt{6}}{12}\right)^2 + \left(\frac{1}{6}\right)^2}
+\end{align*}
+
+\subsubsection{Phần (i)}
+Ta có:
+\[
+\ket{\phi} = \frac{\sqrt{3}}{2} \ket{0} + \frac{1}{2} \ket{1}, \ket{\psi} = \frac{2}{3}\ket{0} + \frac{1 - 2i}{3} \ket{1}
+\]
+$\Rightarrow$ toạ độ của $\ket{\phi}, \ket{\psi}$ trong cơ sở trực chuẩn $B_Z$ là:
+\[
+\begin{cases}
+    \left[\ket{\phi}\right]_{B_Z} = \left(\frac{\sqrt{3}}{2}, \frac{1}{2}\right) \\
+        \left[\ket{\psi}\right]_{B_Z} = \left(\frac{2}{3}, \frac{1 - 2i}{3}\right)
+\end{cases}
+\]
+
+Xét cơ sở trực chuẩn $B_X$, toạ độ của $\ket{\phi}, \ket{\psi}$ trong $B_X$ là:
+\[
+\begin{cases}
+    \left[\ket{\phi}\right]_{B_X} = \left(\braket{+}{\phi}, \braket{-}{\phi}\right) = \left(\frac{2 + \sqrt{6}}{4}, \frac{-2 + \sqrt{6}}{4}\right) \\
+    \left[\ket{\psi}\right]_{B_X} = \left(\braket{+}{\psi}, \braket{-}{\psi}\right) = \left(\frac{\sqrt{2}}{2} - \frac{\sqrt{2}}{3}i, \frac{\sqrt{2}}{6} + \frac{\sqrt{2}}{3}i\right)
+\end{cases}
+\]
+
+Xét cơ sở trực chuẩn $B_Y$, toạ độ của $\ket{\phi}, \ket{\psi}$ trong $B_Y$ là:
+\[
+\begin{cases}
+    \left[\ket{\phi}\right]_{B_Y} = \left(\braket{i}{\phi}, \braket{-i}{\phi}\right) = \left(\frac{\sqrt{6}}{4} + \frac{\sqrt{2}}{4}i \frac{\sqrt{6}}{4} - \frac{\sqrt{2}}{4}i\right) \\
+    \left[\ket{\psi}\right]_{B_Y} = \left(\braket{i}{\psi}, \braket{-i}{\psi}\right) = \left(\frac{2\sqrt{2}}{3} + \frac{\sqrt{2}}{6}i, -\frac{\sqrt{2}}{6}i\right)
+\end{cases}
+\]
+
+\subsubsection{Phần (j)}
+Gọi $\alpha_1, \alpha_2 \in \mathbb{C}$, xét biểu thức:
+\begin{align*}
+    &\quad \alpha_1 a + \alpha_2 b &= 0 \\
+    &\Leftrightarrow \alpha_1 \left(\frac{\sqrt{3}}{2} \begin{bmatrix} 1 & 0 \end{bmatrix} +\frac{i}{2} \begin{bmatrix} 0 & 1 \end{bmatrix} \right) + \alpha_2 \left(\frac{i}{2} \begin{bmatrix} 1 & 0 \end{bmatrix} + \frac{\sqrt{3}}{2} \begin{bmatrix} 0 & 1 \end{bmatrix} \right) &= 0 \\
+    &\Leftrightarrow \left( \alpha_1 \frac{\sqrt{3}}{2} + \alpha_2 \frac{i}{2} \right) \begin{bmatrix} 1 & 0 \end{bmatrix} + \left(\alpha_1 \frac{i}{2} + \alpha_2 \frac{\sqrt{3}}{2}\right) \begin{bmatrix} 0 & 1 \end{bmatrix} &= 0
+\end{align*}
+
+vì tập hợp $\left\{ \begin{bmatrix} 1 & 0 \end{bmatrix},  \begin{bmatrix} 0 & 1 \end{bmatrix}\right\}$ là tập cơ sở nên biểu thức trên chỉ xảy ra khi
+\[
+\begin{cases}
+    \alpha_1 \frac{\sqrt{3}}{2} + \alpha_2 \frac{i}{2} = 0 \\
+    \alpha_1 \frac{i}{2} + \alpha_2 \frac{\sqrt{3}}{2} = 0
+\end{cases} \Leftrightarrow
+\begin{cases}
+    \alpha_1 = 0 \\
+    \alpha_2 = 0
+\end{cases}
+\]
+$\Rightarrow$ $\alpha_1 a + \alpha_2 b = 0$ khi và chỉ khi $\alpha_1 = \alpha_2 = 0 \Leftrightarrow B = \left\{a, b\right\}$ độc lập tuyến tính. 
+
+Ta có:
+\[
+\begin{cases}
+    \ket{a} = \frac{\sqrt{3}}{2} 
+    \begin{bmatrix}
+        1 \\
+        0
+    \end{bmatrix} + 
+    \frac{i}{2}
+    \begin{bmatrix}
+        0 \\
+        1
+    \end{bmatrix} = 
+    \begin{bmatrix}
+        \frac{\sqrt{3}}{2} \\
+        \frac{i}{2}
+    \end{bmatrix} \\
+    \ket{b} = \frac{i}{2} 
+    \begin{bmatrix}
+        1 \\
+        0
+    \end{bmatrix} + 
+    \frac{\sqrt{3}}{2}
+    \begin{bmatrix}
+        0 \\
+        1
+    \end{bmatrix} = 
+    \begin{bmatrix}
+        \frac{i}{2} \\
+        \frac{\sqrt{3}}{2}
+    \end{bmatrix}
+\end{cases}
+\]
+\[
+\Rightarrow
+\begin{cases}
+    \braket{a}{b} = \ket{a}^\dagger \ket{b} = 
+    \begin{bmatrix}
+        \frac{\sqrt{3}}{2} & -\frac{i}{2}
+    \end{bmatrix}
+    \begin{bmatrix}
+        \frac{i}{2} \\
+        \frac{\sqrt{3}}{2}
+    \end{bmatrix} = 0 \\
+    \|a\| = \sqrt{\left(\frac{\sqrt{3}}{2}\right)^2 + \left(\frac{1}{2}\right)^2} = 1 \\
+    \|b\| = \sqrt{\left(\frac{1}{2}\right)^2 + \left(\frac{\sqrt{3}}{2}\right)^2} = 1
+\end{cases}
+\]
+$\Rightarrow B = \left\{a, b\right\}$ là cơ sơ trực chuẩn trong không gian $\mathbb{C}^2$.
+
+$\Rightarrow$ toạ độ của $\ket{\phi}, \ket{\psi}$ trong cơ sở trực chuẩn $B$ là:
+\[
+\begin{cases}
+    \left[\ket{\phi}\right]_{B} = \left(\braket{a}{\phi}, \braket{b}{\phi}\right) = \left(\frac{3}{4} - \frac{i}{4}, \frac{-\sqrt{3}}{4} - \frac{\sqrt{3}}{4}i\right) \\
+    \left[\ket{\psi}\right]_{B} = \left(\braket{a}{\psi}, \braket{b}{\psi}\right) = \left(\frac{-1 + \sqrt{3}}{3} - \frac{i}{3}, \frac{\sqrt{3}}{6} - \frac{1 + \sqrt{2}}{3}i\right)
+\end{cases}
+\]
