@@ -2,16 +2,160 @@
 
 \subsection{Đề bài}
 
-Cho $x, y \in \mathbb{C}$, chứng minh:
+Cho $U$ là toán tử trên $\mathbb{C}^2$ với
+\[
+U\ket{0} = \frac{1}{\sqrt{2}} \begin{bmatrix} 1 \\ -i \end{bmatrix}, U\ket{1} = \frac{1}{\sqrt{2}}\begin{bmatrix} -i \\ 1 \end{bmatrix}.
+\]
+
 \begin{itemize}
-    \item[(a)] $x \overline{x} = \overline{x} x = |x|^2$.
-    \item[(b)] $\overline{x^{-1}} = \left(\overline{x}\right)^{-1} (x \neq 0)$.
-    \item[(c)] $|xy| = |x||y|$.
-    \item[(d)] $|x + y| \leq |x| + |y|$.
+    \item[(a)] Tìm biểu diễn của $U$ trong cơ sở chính tắc $B_Z = \left\{\ket{0}, \ket{1}\right\}$.
+    \item[(b)] Cho $\ket{\phi} = \begin{bmatrix} \alpha \\ \beta \end{bmatrix} \in \mathbb{C}^2$, tìm $U\ket{\phi}$.
+    \item[(c)] $U$ có unita không?   
+    \item[(d)] $U$ có Hermite không?
+    \item[(e)] Tìm $U^\dagger, U^{-1}$.
+    \item[(f)] Tìm $HUH\ket{0}, HUH\ket{1}$ và $HUH$ (H là ma trận Hadamard).
+    \item[(g)] Tìm $UHU\ket{0}, UHU\ket{1}$ và $UHU$.      
 \end{itemize}
 
 \subsection{Lời giải}
 \subsubsection{Phần (a)}
+Ta có:
+\[
+\left[U\right]_{B_Z} = \begin{bmatrix}
+    U\ket{0} & U\ket{1}
+\end{bmatrix} = 
+\frac{1}{\sqrt{2}}\begin{bmatrix}
+    1 & -i \\
+    -i & 1
+\end{bmatrix}
+\]
+$\Rightarrow$ biểu diễn của $U$ trong cơ sở chính tắc $B_Z$ là $\frac{1}{\sqrt{2}}\begin{bmatrix}
+    1 & -i \\
+    -i & 1
+\end{bmatrix}$. 
+
 \subsubsection{Phần (b)}
+Ta có:
+\[
+U\ket{\phi} = \frac{1}{\sqrt{2}}
+\begin{bmatrix}
+    1 & -i \\
+    -i & 1
+\end{bmatrix}
+\begin{bmatrix}
+    \alpha \\
+    \beta 
+\end{bmatrix} =
+\frac{1}{\sqrt{2}}
+\begin{bmatrix}
+    \alpha - \beta \\
+    \beta - \alpha
+\end{bmatrix}
+\]
+
 \subsubsection{Phần (c)}
+Xét biểu thức:
+\begin{align*}
+    U^\dagger U &= \left(
+    \frac{1}{\sqrt{2}} 
+    \begin{bmatrix}
+        1 & i \\
+        i & 1
+    \end{bmatrix}\right)
+    \left(
+    \frac{1}{\sqrt{2}} 
+    \begin{bmatrix}
+        1 & -i \\
+        -i & 1
+    \end{bmatrix}\right) \\
+    &= 
+    \frac{1}{2}
+    \begin{bmatrix}
+        2 & 0 \\
+        0 & 2
+    \end{bmatrix} \\
+    &=
+    \begin{bmatrix}
+        1 & 0 \\
+        0 & 1
+    \end{bmatrix} = I
+\end{align*}
+và
+\begin{align*}
+    U U^\dagger &= \left(
+    \frac{1}{\sqrt{2}} 
+    \begin{bmatrix}
+        1 & -i \\
+        -i & 1
+    \end{bmatrix}\right)
+    \left(
+    \frac{1}{\sqrt{2}} 
+    \begin{bmatrix}
+        1 & i \\
+        i & 1
+    \end{bmatrix}\right)\\
+    &= 
+    \frac{1}{2}
+    \begin{bmatrix}
+        2 & 0 \\
+        0 & 2
+    \end{bmatrix} \\
+    &=
+    \begin{bmatrix}
+        1 & 0 \\
+        0 & 1
+    \end{bmatrix} = I
+\end{align*}
+
+$\Rightarrow U^\dagger U = U U^\dagger = I \Rightarrow$ U unita. 
+
 \subsubsection{Phần (d)}
+Ta có:
+\[
+    \begin{cases}
+        U = \frac{1}{\sqrt{2}} \begin{bmatrix} 1 & -i \\ -i & 1\end{bmatrix} \\
+        U^\dagger = \frac{1}{\sqrt{2}} \begin{bmatrix} 1 & i \\ i & 1\end{bmatrix}
+    \end{cases}
+\]
+$\Rightarrow U^\dagger \neq U \Rightarrow$ U không là Hermite.
+
+\subsubsection{Phần (e)}
+Ta có:
+\[
+U^\dagger = \frac{1}{\sqrt{2}} \begin{bmatrix} 1 & i \\ i & 1\end{bmatrix}
+\]
+vì $U$ là ma trận unita, nên $U$ khả nghịch và
+\[
+U^{-1} = U^\dagger = \frac{1}{\sqrt{2}} \begin{bmatrix} 1 & i \\ i & 1\end{bmatrix}
+\]
+
+\subsubsection{Phần (f)}
+$H$ là ma trận Hadamard $\Rightarrow H = \dfrac{1}{\sqrt{2}} \begin{bmatrix} 1 & 1 \\ 1 & -1 \end{bmatrix}$ 
+\begin{align*}
+    \Rightarrow HUH 
+    &= \dfrac{1}{\sqrt{2}} \begin{bmatrix} 1 & 1 \\ 1 & -1 \end{bmatrix} \dfrac{1}{\sqrt{2}}\begin{bmatrix} 1 & -i \\ -i & 1 \end{bmatrix} \dfrac{1}{\sqrt{2}} \begin{bmatrix} 1 & 1 \\ 1 & -1 \end{bmatrix} \\
+    &= \dfrac{1}{2\sqrt{2}} \begin{bmatrix} 1 - i & 1 - i \\ 1 + i & -1 - i \end{bmatrix} \begin{bmatrix} 1 & 1 \\ 1 & -1 \end{bmatrix} \\
+    &= \dfrac{1}{2\sqrt{2}} \begin{bmatrix} 2 - 2i & 0 \\ 0 & 2 + 2i \end{bmatrix} \\
+    &= \dfrac{1}{\sqrt{2}} \begin{bmatrix} 1 - i & 0 \\ 0 & 1 + i \end{bmatrix} \\
+\end{align*}
+\[
+\Rightarrow \begin{cases}
+    HUH\ket{0} = \dfrac{1}{\sqrt{2}} \begin{bmatrix} 1 - i \\ 0 \end{bmatrix} \\
+    HUH\ket{1} = \dfrac{1}{\sqrt{2}} \begin{bmatrix} 0 \\ 1 + i \end{bmatrix}
+\end{cases}
+\]
+
+\subsubsection{Phần (g)}
+Ta có:
+\begin{align*}
+    UHU &= \dfrac{1}{\sqrt{2}}\begin{bmatrix} 1 & -i \\ -i & 1 \end{bmatrix} \dfrac{1}{\sqrt{2}} \begin{bmatrix} 1 & 1 \\ 1 & -1 \end{bmatrix} \dfrac{1}{\sqrt{2}}\begin{bmatrix} 1 & -i \\ -i & 1 \end{bmatrix} \\
+    &= \dfrac{1}{2\sqrt{2}} \begin{bmatrix} 1 - i & 1 + i \\ 1 - i & -1 - i \end{bmatrix} \begin{bmatrix} 1 & -i \\ -i & 1 \end{bmatrix} \\
+    &= \dfrac{1}{2\sqrt{2}} \begin{bmatrix} 2 - 2i & 0 \\ 0 & -2 -2i \end{bmatrix}\\
+    &= \dfrac{1}{\sqrt{2}} \begin{bmatrix} 1 - i & 0 \\ 0 & -1 - i \end{bmatrix}
+\end{align*}
+\[
+\Rightarrow \begin{cases}
+    UHU\ket{0} = \dfrac{1}{\sqrt{2}} \begin{bmatrix} 1 - i \\ 0 \end{bmatrix} \\
+    UHU\ket{1} = \dfrac{1}{\sqrt{2}} \begin{bmatrix} 0 \\ -1 - i \end{bmatrix}
+\end{cases}
+\]

@@ -2,16 +2,74 @@
 
 \subsection{Đề bài}
 
-Cho $x, y \in \mathbb{C}$, chứng minh:
+Chứng minh $XY = iZ$ bằng cách:
 \begin{itemize}
-    \item[(a)] $x \overline{x} = \overline{x} x = |x|^2$.
-    \item[(b)] $\overline{x^{-1}} = \left(\overline{x}\right)^{-1} (x \neq 0)$.
-    \item[(c)] $|xy| = |x||y|$.
-    \item[(d)] $|x + y| \leq |x| + |y|$.
+    \item[(a)] Nhân ma trận.
+    \item[(b)] Xét tác động của các toán tử trên $\ket{0}, \ket{1}$ .
 \end{itemize}
 
 \subsection{Lời giải}
 \subsubsection{Phần (a)}
+Ta có:
+\[
+X = 
+\begin{bmatrix}
+    0 & 1 \\
+    1 & 0
+\end{bmatrix},
+Y = 
+\begin{bmatrix}
+    0 & -i \\
+    i & 0
+\end{bmatrix},
+Z =
+\begin{bmatrix}
+    1 & 0 \\
+    0 & -1
+\end{bmatrix}
+\]
+\[
+\Rightarrow
+\begin{cases}
+    XY = \begin{bmatrix}
+        0 & 1 \\
+        1 & 0
+    \end{bmatrix}
+    \begin{bmatrix}
+        0 & -i \\
+        i & 0
+    \end{bmatrix}
+    = 
+    \begin{bmatrix}
+        i & 0 \\
+        0 & -i
+    \end{bmatrix} \\
+    iZ = i
+    \begin{bmatrix}
+        1 & 0 \\
+        0 & -1
+    \end{bmatrix}
+    = 
+    \begin{bmatrix}
+        i & 0 \\
+        0 & -i
+    \end{bmatrix}   
+\end{cases}
+\]
+$\Rightarrow XY = iZ = \begin{bmatrix} i & 0 \\ 0 & -i \end{bmatrix} \Rightarrow$ dpcm. 
+
 \subsubsection{Phần (b)}
-\subsubsection{Phần (c)}
-\subsubsection{Phần (d)}
+Ta có:
+\begin{align*}
+    X\ket{0} = \ket{1}&, X\ket{1} = \ket{0} \\
+    Y\ket{0} = i\ket{1}&, Y\ket{1} = -i\ket{0} \\
+    Z\ket{0} = \ket{0}&, Z\ket{1} = -\ket{1}
+\end{align*}
+Xét biểu thức sau:
+\[
+XY \ket{0} = X\left(Y\ket{0}\right) = X \left(i\ket{1}\right) = iX\ket{1} = i\ket{0} = i\left(Z\ket{0}\right) \Leftrightarrow XY\ket{0} = iZ\ket{0}.
+\]
+\[
+XY \ket{1} = X\left(Y\ket{1}\right) = X \left(-i\ket{0}\right) = -iX\ket{0} = -i\ket{1} = i\left(Z\ket{1}\right) \Leftrightarrow XY\ket{1} = iZ\ket{1}.
+\]
+Vì $\left\{\ket{0}, \ket{1}\right\}$ là tập cơ sở nên $XY = iZ \Rightarrow$ dpcm.

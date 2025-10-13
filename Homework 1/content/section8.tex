@@ -2,16 +2,67 @@
 
 \subsection{Đề bài}
 
-Cho $x, y \in \mathbb{C}$, chứng minh:
+Cho $\ket{\phi} = \frac{1}{4}\ket{00} + \frac{1}{2}\ket{01} + \frac{1}{\sqrt{2}}\ket{10} + \frac{\sqrt{3}}{4}\ket{11}$
 \begin{itemize}
-    \item[(a)] $x \overline{x} = \overline{x} x = |x|^2$.
-    \item[(b)] $\overline{x^{-1}} = \left(\overline{x}\right)^{-1} (x \neq 0)$.
-    \item[(c)] $|xy| = |x||y|$.
-    \item[(d)] $|x + y| \leq |x| + |y|$.
+    \item[(a)] Tính $\left(H \otimes X \right) \ket{\phi}$.
+    \item[(b)] Tính $\operatorname{CNOT}{\ket{\phi}}$.
 \end{itemize}
 
 \subsection{Lời giải}
+\begin{align*}
+    \ket{\phi} &= \frac{1}{4}\ket{00} + \frac{1}{2}\ket{01} + \frac{1}{\sqrt{2}}\ket{10} + \frac{\sqrt{3}}{4}\ket{11} \\
+    &= \frac{1}{4}\begin{bmatrix} 1 \\ 0 \\ 0 \\ 0 \end{bmatrix} + \frac{1}{2}\begin{bmatrix} 0 \\ 1 \\ 0 \\ 0  \end{bmatrix} + \frac{1}{\sqrt{2}}\begin{bmatrix} 0 \\ 0 \\ 1 \\ 0 \end{bmatrix}+ \frac{\sqrt{3}}{4}
+    \begin{bmatrix} 0 \\ 0 \\ 0 \\ 1 \end{bmatrix} \\
+    \Rightarrow \ket{\phi} &= \begin{bmatrix} \frac{1}{4} \\ \frac{1}{2} \\ \frac{1}{\sqrt{2}} \\ \frac{\sqrt{3}}{4} \end{bmatrix}
+\end{align*}
+
 \subsubsection{Phần (a)}
+Ta có:
+\[
+H \otimes X = \frac{1}{\sqrt{2}} \begin{bmatrix} 1 & 1 \\ 1 & -1 \end{bmatrix} \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix} = \frac{1}{\sqrt{2}} \begin{bmatrix} 
+    0 & 1 & 0 & 1 \\  
+    1 & 0 & 1 & 0 \\
+    0 & 1 & 0 & -1 \\
+    1 & 0 & -1 & 0
+\end{bmatrix} 
+\]
+\[
+\Rightarrow \left(H \otimes X\right) \ket{\phi} = \frac{1}{\sqrt{2}} \begin{bmatrix} 
+    \frac{1}{2} + \frac{\sqrt{3}}{4} \\ 
+    \frac{1}{4} + \frac{1}{\sqrt{2}} \\
+    \frac{1}{2} - \frac{\sqrt{3}}{4} \\
+    \frac{1}{4} - \frac{1}{\sqrt{2}} 
+\end{bmatrix}
+\]
 \subsubsection{Phần (b)}
-\subsubsection{Phần (c)}
-\subsubsection{Phần (d)}
+Ta có:
+\[
+\operatorname{CNOT} = \begin{bmatrix}
+    1 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0 \\
+    0 & 0 & 0 & 1 \\
+    0 & 0 & 1 & 0
+\end{bmatrix}
+\]
+\[
+\Rightarrow \operatorname{CNOT}{\ket{\phi}} = 
+\begin{bmatrix}
+    1 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0 \\
+    0 & 0 & 0 & 1 \\
+    0 & 0 & 1 & 0
+\end{bmatrix}
+\begin{bmatrix} 
+    \frac{1}{4} \\ 
+    \frac{1}{2} \\ 
+    \frac{1}{\sqrt{2}} \\ 
+    \frac{\sqrt{3}}{4} 
+\end{bmatrix}
+=
+\begin{bmatrix} 
+    \frac{1}{4} \\ 
+    \frac{1}{2} \\ 
+    \frac{\sqrt{3}}{4} \\
+    \frac{1}{\sqrt{2}} 
+\end{bmatrix}
+\]

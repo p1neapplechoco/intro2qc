@@ -2,16 +2,50 @@
 
 \subsection{Đề bài}
 
-Cho $x, y \in \mathbb{C}$, chứng minh:
+Cho $\ket{\phi} = \frac{1}{2}\ket{00} + \frac{i}{\sqrt{2}}\ket{10} + \frac{\sqrt{3} + i}{4}\ket{11}$
 \begin{itemize}
-    \item[(a)] $x \overline{x} = \overline{x} x = |x|^2$.
-    \item[(b)] $\overline{x^{-1}} = \left(\overline{x}\right)^{-1} (x \neq 0)$.
-    \item[(c)] $|xy| = |x||y|$.
-    \item[(d)] $|x + y| \leq |x| + |y|$.
+    \item[(a)] Cho thấy $\ket{\phi}$ là vector đơn vị.
+    \item[(b)] Tính $\operatorname{proj}_{\ket{+-}}{\ket{\phi}}$ và chuẩn hoá $\operatorname{proj}_{\ket{+-}}{\ket{\phi}}$.
+    \item[(c)] Tính toạ độ của $\ket{\phi}$ theo cơ sở Bell.
 \end{itemize}
 
 \subsection{Lời giải}
 \subsubsection{Phần (a)}
+Ta có:
+\begin{align*}
+    \ket{\phi} &= \frac{1}{2}\ket{00} + \frac{i}{\sqrt{2}}\ket{10} + \frac{\sqrt{3} + i}{4}\ket{11} \\
+    &= \begin{bmatrix} 0 \\ 0 \\ 0 \\ \frac{1}{2} \end{bmatrix} + \begin{bmatrix} 0 \\ \frac{i}{\sqrt{2}} \\ 0 \\ 0 \end{bmatrix} + \begin{bmatrix} \frac{\sqrt{3} + i}{4} \\ 0 \\ 0 \\ 0 \end{bmatrix} \\
+    \Rightarrow \ket{\phi} &= \begin{bmatrix} \frac{\sqrt{3} + i}{4} \\ \frac{i}{\sqrt{2}} \\ 0 \\ \frac{1}{2} \end{bmatrix}
+\end{align*}
+\[
+\Rightarrow \|\ket{\phi}\| = \sqrt{\left| \frac{\sqrt{3} + i}{4}\right|^2 + \left|\frac{i}{\sqrt{2}}\right|^2 + \left|\frac{1}{2}\right|^2} = \sqrt{\frac{1}{4} + \frac{1}{2} + \frac{1}{4}} = 1 
+\]
+$\Rightarrow \ket{\phi} $ là vector đơn vị.
+
 \subsubsection{Phần (b)}
+Ta có:
+\[
+\ket{+-} = \frac{1}{2}\begin{bmatrix} 1 \\ -1 \\ 1 \\ -1 \end{bmatrix} \Rightarrow \bra{+-} = \frac{1}{2}\begin{bmatrix} 1 & -1 & 1 & -1 \end{bmatrix}.
+\]
+\begin{align*}
+    \Rightarrow \operatorname{proj}_{\ket{+-}}{\ket{\phi}} &= \frac{\braket{+-}{\phi}}{\|\ket{+-}\|^2}\ket{+-} \\
+    \Rightarrow \operatorname{proj}_{\ket{+-}}{\ket{\phi}} &= \left(\frac{\sqrt{3} - 2}{8} + \frac{1 - 2\sqrt{2}}{8}i\right) \ket{+-} \\
+\end{align*}
+Chuẩn hoá $\operatorname{proj}_{\ket{+-}}{\ket{\phi}}$, ta được:
+\[
+e = \frac{\operatorname{proj}_{\ket{+-}}{\ket{\phi}}}{\|\operatorname{proj}_{\ket{+-}}{\ket{\phi}}\|} = \frac{\sqrt{3} - 2 + (1 - 2\sqrt{2})i}{\sqrt{\left(\sqrt{3} - 2\right)^2 + \left(1 - 2\sqrt{2}\right)^2}}\ket{+-} = \frac{\sqrt{3} - 2 + (1 - 2\sqrt{2})i}{\sqrt{16 - 4\sqrt{3} - 4\sqrt{2}}} \ket{+-}
+\]
+
 \subsubsection{Phần (c)}
-\subsubsection{Phần (d)}
+Cơ sở Bell là:
+\[
+B = \left\{\ket{\Phi^+} = \begin{bmatrix} \frac{1}{\sqrt{2}} \\ 0 \\ 0  \\ \frac{1}{\sqrt{2}} \end{bmatrix}, \ket{\Phi^-} = \begin{bmatrix} \frac{1}{\sqrt{2}} \\ 0 \\ 0  \\ -\frac{1}{\sqrt{2}} \end{bmatrix}, \ket{\Psi^+} = \begin{bmatrix} 0 \\ \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \\ 0 \end{bmatrix}, \ket{\Psi^-} = \begin{bmatrix} 0 \\ \frac{1}{\sqrt{2}} \\ -\frac{1}{\sqrt{2}} \\ 0 \end{bmatrix}\right\}
+\]
+Ta có:
+\begin{align*}
+    \left[\ket{\phi}\right]_B &= \left(\braket{\Phi^+}{\phi}, \braket{\Phi^-}{\phi}, \braket{\Psi^+}{\phi}, \braket{\Psi^-}{\phi}\right) \\
+    &= \left(\ket{\Phi^+}^\dagger \ket{\phi}, \ket{\Phi^-}^\dagger \ket{\phi}, \ket{\Psi^+}^\dagger \ket{\phi}, \ket{\Psi^-}^\dagger \ket{\phi}\right) \\
+    &= \left(\frac{\sqrt{3} + 3i}{4\sqrt{2}}, \frac{\sqrt{3} + i}{4\sqrt{2}}, \frac{i}{\sqrt{2}}, \frac{i}{\sqrt{2}}\right)
+\end{align*}
+
+$\Rightarrow$ toạ độ của $\ket{\phi}$ trong cơ sở Bell là $\begin{bmatrix}\frac{\sqrt{3} + 3i}{4\sqrt{2}} \\ \frac{\sqrt{3} + i}{4\sqrt{2}} \\ \frac{i}{\sqrt{2}} \\ \frac{i}{\sqrt{2}} \end{bmatrix}$.
