@@ -75,7 +75,7 @@ Ta có:
     +
     \begin{bmatrix}
         0 \\
-        \frac{1}{3}
+        \frac{1 - 2i}{3}
     \end{bmatrix}
 \right)^\dagger =
 \begin{bmatrix}
@@ -151,48 +151,50 @@ Ta có:
 \subsubsection{Phần (d)}
 Ta có:
 \[
-\ket{\phi}\ket{\psi} = 
+\bra{\phi}\bra{\psi} = 
 \begin{bmatrix}
-    \frac{\sqrt{3}}{2} \\
+    \frac{\sqrt{3}}{2} &
     \frac{1}{2}
 \end{bmatrix}
+\otimes
 \begin{bmatrix}
-    \frac{2}{3} \\
+    \frac{2}{3} &
     \frac{1 + 2i}{3}
 \end{bmatrix} = 
 \begin{bmatrix}
-    \frac{\sqrt{3}}{2} \times \frac{2}{3} \\
-    \frac{\sqrt{3}}{2} \times \frac{1 + 2i}{3} \\
-    \frac{1}{2} \times \frac{2}{3} \\
+    \frac{\sqrt{3}}{2} \times \frac{2}{3} &
+    \frac{\sqrt{3}}{2} \times \frac{1 + 2i}{3} &
+    \frac{1}{2} \times \frac{2}{3} &
     \frac{1}{2} \times \frac{1 + 2i}{3} 
 \end{bmatrix} =
 \begin{bmatrix}
-    \frac{\sqrt{3}}{3} \\
-    \frac{\sqrt{3}}{6} + \frac{\sqrt{3}}{3}i \\
-    \frac{1}{3} \\
+    \frac{\sqrt{3}}{3} &
+    \frac{\sqrt{3}}{6} + \frac{\sqrt{3}}{3}i &
+    \frac{1}{3} &
     \frac{1}{6} + \frac{1}{3}i
 \end{bmatrix} 
 \]
 \[
-\ket{\psi}\ket{\phi} = 
+\bra{\psi}\bra{\phi} = 
 \begin{bmatrix}
-    \frac{2}{3} \\
+    \frac{2}{3} &
     \frac{1 + 2i}{3}
-\end{bmatrix} 
+\end{bmatrix}
+\otimes 
 \begin{bmatrix}
-    \frac{\sqrt{3}}{2} \\
+    \frac{\sqrt{3}}{2} &
     \frac{1}{2}
 \end{bmatrix} =
 \begin{bmatrix}
-    \frac{2}{3} \times \frac{\sqrt{3}}{2} \\
-    \frac{2}{3} \times \frac{1}{2} \\
-    \frac{1 + 2i}{3} \times \frac{\sqrt{3}}{2} \\
+    \frac{2}{3} \times \frac{\sqrt{3}}{2} &
+    \frac{2}{3} \times \frac{1}{2} &
+    \frac{1 + 2i}{3} \times \frac{\sqrt{3}}{2} &
     \frac{1 + 2i}{3} \times \frac{1}{2} 
 \end{bmatrix} =
 \begin{bmatrix}
-    \frac{\sqrt{3}}{3} \\
-    \frac{1}{3} \\
-    \frac{\sqrt{3}}{6} + \frac{\sqrt{3}}{3}i \\
+    \frac{\sqrt{3}}{3} &
+    \frac{1}{3} &
+    \frac{\sqrt{3}}{6} + \frac{\sqrt{3}}{3}i &
     \frac{1}{6} + \frac{1}{3}i
 \end{bmatrix} 
 \]
@@ -377,7 +379,7 @@ $\Rightarrow B = \left\{a, b\right\}$ là cơ sơ trực chuẩn trong không gi
 $\Rightarrow$ toạ độ của $\ket{\phi}, \ket{\psi}$ trong cơ sở trực chuẩn $B$ là:
 \[
 \begin{cases}
-    \left[\ket{\phi}\right]_{B} = \left(\braket{a}{\phi}, \braket{b}{\phi}\right) = \left(\frac{3}{4} - \frac{i}{4}, \frac{-\sqrt{3}}{4} - \frac{\sqrt{3}}{4}i\right) \\
-    \left[\ket{\psi}\right]_{B} = \left(\braket{a}{\psi}, \braket{b}{\psi}\right) = \left(\frac{-1 + \sqrt{3}}{3} - \frac{i}{3}, \frac{\sqrt{3}}{6} - \frac{1 + \sqrt{2}}{3}i\right)
+    \left[\ket{\phi}\right]_{B} = \left(\braket{a}{\phi}, \braket{b}{\phi}\right) = \left(\frac{3}{4} - \frac{i}{4}, \frac{\sqrt{3}}{4}i - \frac{\sqrt{3}}{4}\right) \\
+    \left[\ket{\psi}\right]_{B} = \left(\braket{a}{\psi}, \braket{b}{\psi}\right) = \left(\frac{\sqrt{3}}{3} + \frac{1}{6} - \frac{i}{3}, \frac{i}{3} + \frac{\sqrt{3}}{6} + \frac{i\sqrt{3}}{3}\right)
 \end{cases}
 \]

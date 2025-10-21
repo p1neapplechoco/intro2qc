@@ -14,11 +14,11 @@ Cho $\ket{\phi} = \frac{1}{2}\ket{00} + \frac{i}{\sqrt{2}}\ket{10} + \frac{\sqrt
 Ta có:
 \begin{align*}
     \ket{\phi} &= \frac{1}{2}\ket{00} + \frac{i}{\sqrt{2}}\ket{10} + \frac{\sqrt{3} + i}{4}\ket{11} \\
-    &= \begin{bmatrix} 0 \\ 0 \\ 0 \\ \frac{1}{2} \end{bmatrix} + \begin{bmatrix} 0 \\ \frac{i}{\sqrt{2}} \\ 0 \\ 0 \end{bmatrix} + \begin{bmatrix} \frac{\sqrt{3} + i}{4} \\ 0 \\ 0 \\ 0 \end{bmatrix} \\
-    \Rightarrow \ket{\phi} &= \begin{bmatrix} \frac{\sqrt{3} + i}{4} \\ \frac{i}{\sqrt{2}} \\ 0 \\ \frac{1}{2} \end{bmatrix}
+    &= \frac{1}{2}\begin{bmatrix} 1 \\ 0 \\ 0 \\ 0 \end{bmatrix} + \frac{i}{\sqrt{2}}\begin{bmatrix} 0 \\ 0 \\ 1 \\ 0 \end{bmatrix} + \frac{\sqrt{3} + i}{4}\begin{bmatrix} 0 \\ 0 \\ 0 \\ 1 \end{bmatrix} \\
+    \Rightarrow \ket{\phi} &= \begin{bmatrix} \frac{1}{2} \\ 0 \\ \frac{i}{\sqrt{2}} \\ \frac{\sqrt{3} + i}{4} \end{bmatrix}
 \end{align*}
 \[
-\Rightarrow \|\ket{\phi}\| = \sqrt{\left| \frac{\sqrt{3} + i}{4}\right|^2 + \left|\frac{i}{\sqrt{2}}\right|^2 + \left|\frac{1}{2}\right|^2} = \sqrt{\frac{1}{4} + \frac{1}{2} + \frac{1}{4}} = 1 
+\Rightarrow \|\ket{\phi}\| = \sqrt{\left|\frac{1}{2}\right|^2 + \left|\frac{i}{\sqrt{2}}\right|^2 + \left| \frac{\sqrt{3} + i}{4}\right|^2} = \sqrt{\frac{1}{4} + \frac{1}{2} + \frac{1}{4}} = 1 
 \]
 $\Rightarrow \ket{\phi} $ là vector đơn vị.
 
@@ -28,12 +28,18 @@ Ta có:
 \ket{+-} = \frac{1}{2}\begin{bmatrix} 1 \\ -1 \\ 1 \\ -1 \end{bmatrix} \Rightarrow \bra{+-} = \frac{1}{2}\begin{bmatrix} 1 & -1 & 1 & -1 \end{bmatrix}.
 \]
 \begin{align*}
+    \braket{+-}{\phi} &= \frac{1}{2}\begin{bmatrix} 1 & -1 & 1 & -1 \end{bmatrix} \begin{bmatrix} \frac{1}{2} \\ 0 \\ \frac{i}{\sqrt{2}} \\ \frac{\sqrt{3} + i}{4} \end{bmatrix} \\
+    &= \frac{1}{2}\left(\frac{1}{2} + \frac{i}{\sqrt{2}} - \frac{\sqrt{3} + i}{4}\right) \\
+    &= \frac{1}{2}\left(\frac{1 - \sqrt{3}}{4} + \frac{2\sqrt{2} - 1}{4\sqrt{2}}i\right) \\
+    &= \frac{1 - \sqrt{3}}{8} + \frac{2\sqrt{2} - 1}{8\sqrt{2}}i
+\end{align*}
+\begin{align*}
     \Rightarrow \operatorname{proj}_{\ket{+-}}{\ket{\phi}} &= \frac{\braket{+-}{\phi}}{\|\ket{+-}\|^2}\ket{+-} \\
-    \Rightarrow \operatorname{proj}_{\ket{+-}}{\ket{\phi}} &= \left(\frac{\sqrt{3} - 2}{8} + \frac{1 - 2\sqrt{2}}{8}i\right) \ket{+-} \\
+    &= \left(\frac{1 - \sqrt{3}}{8} + \frac{2\sqrt{2} - 1}{8\sqrt{2}}i\right) \ket{+-} \\
 \end{align*}
 Chuẩn hoá $\operatorname{proj}_{\ket{+-}}{\ket{\phi}}$, ta được:
 \[
-e = \frac{\operatorname{proj}_{\ket{+-}}{\ket{\phi}}}{\|\operatorname{proj}_{\ket{+-}}{\ket{\phi}}\|} = \frac{\sqrt{3} - 2 + (1 - 2\sqrt{2})i}{\sqrt{\left(\sqrt{3} - 2\right)^2 + \left(1 - 2\sqrt{2}\right)^2}}\ket{+-} = \frac{\sqrt{3} - 2 + (1 - 2\sqrt{2})i}{\sqrt{16 - 4\sqrt{3} - 4\sqrt{2}}} \ket{+-}
+e = \frac{\operatorname{proj}_{\ket{+-}}{\ket{\phi}}}{\|\operatorname{proj}_{\ket{+-}}{\ket{\phi}}\|} = \frac{(1 - \sqrt{3}) + \frac{2\sqrt{2} - 1}{\sqrt{2}}i}{\sqrt{(1 - \sqrt{3})^2 + \frac{(2\sqrt{2} - 1)^2}{2}}} \ket{+-}
 \]
 
 \subsubsection{Phần (c)}
