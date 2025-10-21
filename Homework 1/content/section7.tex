@@ -12,6 +12,57 @@ Kiểm tra các vector sau có phân tách được
 \subsection{Lời giải}
 
 \subsubsection{Phần (a)}
+Ta có:
+\begin{align*}
+    \ket{\phi_1} &= \frac{1}{2} \begin{bmatrix} 1 \\ -1 \\ 1 \\ -1 \end{bmatrix} \\
+    &= \frac{1}{2} \begin{bmatrix} 1 \\ 1 \end{bmatrix} \otimes \begin{bmatrix} 1 \\ -1 \end{bmatrix} \\
+    &= \begin{bmatrix} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{bmatrix} \otimes \begin{bmatrix} \frac{1}{\sqrt{2}} \\ -\frac{1}{\sqrt{2}} \end{bmatrix} \\
+    \Rightarrow \ket{\phi_1} &= \ket{+} \otimes \ket{-}
+\end{align*}
+
+Vậy vector $\ket{\phi_1}$ phân tách được.
+
 \subsubsection{Phần (b)}
+Ta có:
+\begin{align*}
+    \ket{\phi_2} &= \frac{1}{2\sqrt{2}} \begin{bmatrix} \sqrt{3} \\ -\sqrt{3} \\ 1 \\ -1 \end{bmatrix} \\
+    &= \frac{1}{2\sqrt{2}} \begin{bmatrix} \sqrt{3} \\ 1 \end{bmatrix} \otimes \begin{bmatrix} 1 \\ -1 \end{bmatrix} \\
+    &= \begin{bmatrix} \frac{\sqrt{3}}{2} \\ \frac{1}{2} \end{bmatrix} \otimes \begin{bmatrix} \frac{1}{\sqrt{2}} \\ -\frac{1}{\sqrt{2}} \end{bmatrix} \\
+    \Rightarrow \ket{\phi_2} &= \left(\frac{\sqrt{3}\ket{0} + \ket{1}}{2}\right) \otimes \ket{-}
+\end{align*}
+
+Vậy vector $\ket{\phi_2}$ phân tách được.
+
 \subsubsection{Phần (c)}
+Ta có:
+\begin{align*}
+    \ket{\phi_3} &= \frac{1}{\sqrt{2}} \begin{bmatrix} 0 \\ 0 \\ 1 \\ i \end{bmatrix} \\
+    &= \frac{1}{\sqrt{2}} \begin{bmatrix} 0 \\ 1 \end{bmatrix} \otimes \begin{bmatrix} 1 \\ i \end{bmatrix} \\
+    &= \begin{bmatrix} 0 \\ 1 \end{bmatrix} \otimes \begin{bmatrix} \frac{1}{\sqrt{2}} \\ \frac{i}{\sqrt{2}} \end{bmatrix} \\
+    \Rightarrow \ket{\phi_3} &= \ket{1} \otimes \ket{i}
+\end{align*}
+
+Vậy vector $\ket{\phi_3}$ phân tách được.
+
 \subsubsection{Phần (d)}
+
+Giả sử $\ket{\phi_4}$ tách được, ta có:
+\[
+\ket{\tau} = \begin{bmatrix} a \\ b \end{bmatrix}, \ket{\psi} = \begin{bmatrix} c \\ d \end{bmatrix} \in \mathbb{C}^2
+\]
+sao cho
+\[
+\ket{\phi_4} = \ket{\tau}\ket{\psi} \Leftrightarrow \begin{bmatrix} \frac{1}{\sqrt{6}} \\ \frac{1}{\sqrt{6}} \\ \frac{1}{\sqrt{3}} \\ \frac{-1}{\sqrt{3}}\end{bmatrix} = \begin{bmatrix} a \\ b \end{bmatrix} \otimes \begin{bmatrix} c \\ d \end{bmatrix} = \begin{bmatrix} ac \\ ad \\ bc \\ bd \end{bmatrix} \Rightarrow 
+\begin{cases}
+    ac = ad = \frac{1}{\sqrt{6}} \\
+    bc = -bd = \frac{1}{\sqrt{3}}
+\end{cases} (a, b, c, d \neq 0)
+\]
+\[
+\Rightarrow \begin{cases}
+c = d = \frac{1}{a\sqrt{6}} \\
+c = -d = \frac{1}{b\sqrt{3}}
+\end{cases} \Rightarrow
+(c = d) \vee (c = -d) \Leftrightarrow d = -d = 0
+\]
+Vô lý vì $a, b, c, d \neq 0$, suy ra $\ket{\phi_4}$ không tách được.
