@@ -226,8 +226,8 @@ Ta có:
     \frac{1 - 2i}{3}
 \end{bmatrix} =
 \begin{bmatrix}
-    \frac{1 + 2\sqrt{6}}{9} + \frac{2}{9}i \\
-    \frac{5 + 2\sqrt{6}}{18} - \frac{2 + 2\sqrt{6}}{9} i
+    \frac{1 + 2\sqrt{3}}{9} + \frac{2}{9}i \\
+    \frac{5 + 2\sqrt{3}}{18} + \frac{2 - 4\sqrt{3}}{18}i
 \end{bmatrix}
 \]
 
@@ -238,42 +238,30 @@ Ta có:
     \frac{1}{2}
 \end{bmatrix} =
 \begin{bmatrix}
-    \frac{\sqrt{3} + 6\sqrt{2}}{12} - \frac{\sqrt{3}}{6}i \\
-    \frac{1 + 2\sqrt{6}}{12} - \frac{1}{6} i
+    \frac{\sqrt{3}(1 + 2\sqrt{3})}{12} - \frac{\sqrt{3}}{6}i \\
+    \frac{1 + 2\sqrt{3}}{12} - \frac{1}{6}i
 \end{bmatrix}
 \]
 \subsubsection{Phần (h)}
 Gọi $e_1, e_2$ lần lượt là vector chuẩn hoá của $\operatorname{proj}_{\ket{\psi}}{\ket{\phi}}, \operatorname{proj}_{\ket{\phi}}{\ket{\psi}}$, ta có:
 \begin{align*}
-    e_1 &= \operatorname{proj}_{\ket{\psi}}{\ket{\phi}} \frac{1}{\|\operatorname{proj}_{\ket{\psi}}{\ket{\phi}}\|} \\
+    e_1 &= \frac{\operatorname{proj}_{\ket{\psi}}{\ket{\phi}}}{\|\operatorname{proj}_{\ket{\psi}}{\ket{\phi}}\|} \\
     &= 
     \begin{bmatrix}
-        \frac{1 + 2\sqrt{6}}{9} - \frac{2}{9}i \\
-        \frac{5 + 2\sqrt{6}}{18} - \frac{2 + 2\sqrt{6}}{9} i
+        \frac{1 + 2\sqrt{3}}{9} + \frac{2}{9}i \\
+        \frac{5 + 2\sqrt{3}}{18} + \frac{2 - 4\sqrt{3}}{18}i
     \end{bmatrix}
-    \frac{1}{\sqrt{\left|\frac{1 + 2\sqrt{6}}{9} - \frac{2}{9}i \right|^2 + \left|\frac{5 + 2\sqrt{6}}{18} - \frac{2 + 2\sqrt{6}}{9} i\right|^2}} \\
-    &= 
-    \begin{bmatrix}
-        \frac{1 + 2\sqrt{6}}{9} - \frac{2}{9}i \\
-        \frac{5 + 2\sqrt{6}}{18} - \frac{2 + 2\sqrt{6}}{9} i
-    \end{bmatrix}
-    \frac{1}{\left(\frac{1 + 2\sqrt{6}}{9}\right)^2 + \left(\frac{2}{9}\right)^2 + \left(\frac{5 + 2\sqrt{6}}{18}\right)^2 + \left(\frac{2 + 2\sqrt{6}}{9}\right)^2}
+    \frac{1}{\sqrt{\left|\frac{1 + 2\sqrt{3}}{9} + \frac{2}{9}i \right|^2 + \left|\frac{5 + 2\sqrt{3}}{18} + \frac{2 - 4\sqrt{3}}{18}i\right|^2}}
 \end{align*}
 
 \begin{align*}
-    e_2 &= \operatorname{proj}_{\ket{\phi}}{\ket{\psi}} \frac{1}{\|\operatorname{proj}_{\ket{\phi}}{\ket{\psi}}\|} \\
+    e_2 &= \frac{\operatorname{proj}_{\ket{\phi}}{\ket{\psi}}}{\|\operatorname{proj}_{\ket{\phi}}{\ket{\psi}}\|} \\
     &= 
     \begin{bmatrix}
-        \frac{\sqrt{3} + 6\sqrt{2}}{12} - \frac{\sqrt{3}}{6}i \\
-        \frac{1 + 2\sqrt{6}}{12} - \frac{1}{6} i
+        \frac{\sqrt{3}(1 + 2\sqrt{3})}{12} - \frac{\sqrt{3}}{6}i \\
+        \frac{1 + 2\sqrt{3}}{12} - \frac{1}{6}i
     \end{bmatrix}
-    \frac{1}{\sqrt{\left|\frac{\sqrt{3} + 6\sqrt{2}}{12} - \frac{\sqrt{3}}{6}i \right|^2 + \left|\frac{1 + 2\sqrt{6}}{12} - \frac{1}{6} i\right|^2}} \\
-    &= 
-    \begin{bmatrix}
-        \frac{\sqrt{3} + 6\sqrt{2}}{12} - \frac{\sqrt{3}}{6}i \\
-        \frac{1 + 2\sqrt{6}}{12} - \frac{1}{6} i
-    \end{bmatrix}
-    \frac{1}{\left(\frac{\sqrt{3} + 6\sqrt{2}}{12}\right)^2 + \left(\frac{\sqrt{3}}{6}\right)^2 + \left(\frac{1 + 2\sqrt{6}}{12}\right)^2 + \left(\frac{1}{6}\right)^2}
+    \frac{1}{\sqrt{\left|\frac{\sqrt{3}(1 + 2\sqrt{3})}{12} - \frac{\sqrt{3}}{6}i \right|^2 + \left|\frac{1 + 2\sqrt{3}}{12} - \frac{1}{6}i\right|^2}}
 \end{align*}
 
 \subsubsection{Phần (i)}
@@ -292,16 +280,16 @@ $\Rightarrow$ toạ độ của $\ket{\phi}, \ket{\psi}$ trong cơ sở trực c
 Xét cơ sở trực chuẩn $B_X$, toạ độ của $\ket{\phi}, \ket{\psi}$ trong $B_X$ là:
 \[
 \begin{cases}
-    \left[\ket{\phi}\right]_{B_X} = \left(\braket{+}{\phi}, \braket{-}{\phi}\right) = \left(\frac{2 + \sqrt{6}}{4}, \frac{-2 + \sqrt{6}}{4}\right) \\
-    \left[\ket{\psi}\right]_{B_X} = \left(\braket{+}{\psi}, \braket{-}{\psi}\right) = \left(\frac{\sqrt{2}}{2} - \frac{\sqrt{2}}{3}i, \frac{\sqrt{2}}{6} + \frac{\sqrt{2}}{3}i\right)
+    \left[\ket{\phi}\right]_{B_X} = \left(\braket{+}{\phi}, \braket{-}{\phi}\right) = \left(\frac{\sqrt{6} + \sqrt{2}}{4}, \frac{\sqrt{6} - \sqrt{2}}{4}\right) \\
+    \left[\ket{\psi}\right]_{B_X} = \left(\braket{+}{\psi}, \braket{-}{\psi}\right) = \left(\frac{\sqrt{2}(2 + 1 - 2i)}{3\sqrt{2}}, \frac{\sqrt{2}(2 - 1 + 2i)}{3\sqrt{2}}\right) = \left(\frac{3 - 2i}{3}, \frac{1 + 2i}{3}\right)
 \end{cases}
 \]
 
 Xét cơ sở trực chuẩn $B_Y$, toạ độ của $\ket{\phi}, \ket{\psi}$ trong $B_Y$ là:
 \[
 \begin{cases}
-    \left[\ket{\phi}\right]_{B_Y} = \left(\braket{i}{\phi}, \braket{-i}{\phi}\right) = \left(-\frac{\sqrt{6}}{4} - \frac{\sqrt{2}}{4}i, -\frac{\sqrt{6}}{4} + \frac{\sqrt{2}}{4}i\right) \\
-    \left[\ket{\psi}\right]_{B_Y} = \left(\braket{i}{\psi}, \braket{-i}{\psi}\right) = \left(\frac{2\sqrt{2}}{3} + \frac{\sqrt{2}}{6}i, -\frac{\sqrt{2}}{6}i\right)
+    \left[\ket{\phi}\right]_{B_Y} = \left(\braket{i}{\phi}, \braket{-i}{\phi}\right) = \left(\frac{\sqrt{6} - i\sqrt{2}}{4}, \frac{\sqrt{6} + i\sqrt{2}}{4}\right) \\
+    \left[\ket{\psi}\right]_{B_Y} = \left(\braket{i}{\psi}, \braket{-i}{\psi}\right) = \left(\frac{2 - i(1 - 2i)}{3\sqrt{2}}, \frac{2 + i(1 - 2i)}{3\sqrt{2}}\right) = \left(\frac{(4 - i)\sqrt{2}}{6}, \frac{i\sqrt{2}}{6}\right)
 \end{cases}
 \]
 
@@ -379,7 +367,7 @@ $\Rightarrow B = \left\{a, b\right\}$ là cơ sơ trực chuẩn trong không gi
 $\Rightarrow$ toạ độ của $\ket{\phi}, \ket{\psi}$ trong cơ sở trực chuẩn $B$ là:
 \[
 \begin{cases}
-    \left[\ket{\phi}\right]_{B} = \left(\braket{a}{\phi}, \braket{b}{\phi}\right) = \left(\frac{3}{4} - \frac{i}{4}, \frac{\sqrt{3}}{4}i - \frac{\sqrt{3}}{4}\right) \\
-    \left[\ket{\psi}\right]_{B} = \left(\braket{a}{\psi}, \braket{b}{\psi}\right) = \left(\frac{\sqrt{3}}{3} + \frac{1}{6} - \frac{i}{3}, \frac{i}{3} + \frac{\sqrt{3}}{6} + \frac{i\sqrt{3}}{3}\right)
+    \left[\ket{\phi}\right]_{B} = \left(\braket{a}{\phi}, \braket{b}{\phi}\right) = \left(\frac{3}{4} - \frac{i}{4}, \frac{\sqrt{3}}{4} - \frac{i\sqrt{3}}{4}\right) \\
+    \left[\ket{\psi}\right]_{B} = \left(\braket{a}{\psi}, \braket{b}{\psi}\right) = \left(\frac{\sqrt{3} - 1}{3} - \frac{i}{6}, \frac{i}{3} + \frac{\sqrt{3}(1 - 2i)}{6}\right)
 \end{cases}
 \]
