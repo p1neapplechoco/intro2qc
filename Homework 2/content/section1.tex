@@ -1,0 +1,73 @@
+\section{Bài 1}
+
+\subsection{Đề bài}
+
+Khảo sát phép đo theo các cơ sở $B_Z = \{ \ket{0}, \ket{1}\}, B_X = \{\ket{+}, \ket{-} \}, B_Y = \{\ket{i}, \ket{-i} \}$ của các trạng thái lượng tử sau:
+
+\begin{itemize}
+    \item $\ket{\psi_1} = \frac{\sqrt{3}}{2} \ket{0} + \frac{1}{2} \ket{1}$.
+    \item $\ket{\psi_2} = \frac{1}{\sqrt{2}} \left( \ket{0} + e^{i \frac{\pi}{6}}\ket{1} \right)$.
+    \item $\ket{\psi_3} = \frac{2}{3} \ket{0} + \frac{1 - 2i}{3} \ket{1}$.
+\end{itemize}
+
+\subsection{Lời giải}
+
+\subsubsection{Phần a}
+
+Với cơ sở $B_Z$, ta có phép đo $\ket{\psi_1}$ sẽ cho 1 trong 2 kết quả sau:
+\begin{itemize}
+    \item được $0$ với xác suất $\left|\frac{\sqrt{3}}{2}\right|^2 = \frac{3}{4}$ và sụp đổ thành $\ket{0}$,
+    \item được $1$ với xác suất $\left|\frac{1}{2}\right|^2 = \frac{1}{4}$ và sụp đổ thành $\ket{1}$.
+\end{itemize}
+
+Với cơ sở $B_X$, ta có phép đo $\ket{\psi_2}$ sẽ cho 1 trong 2 kết quả sau:
+\begin{itemize}
+    \item được $+$ với xác suất $\left|\braket{+}{\psi_2}\right|^2 = \left(\frac{\sqrt{6} + \sqrt{2}}{4}\right)^2$ và sụp đổ thành $\ket{+}$,
+    \item được $-$ với xác suất $\left|\braket{-}{\psi_2} \right|^2 = \left(\frac{\sqrt{6} - \sqrt{2}}{4}\right)^2$ và sụp đổ thành $\ket{-}$.
+\end{itemize}
+
+Với cơ sở $B_Y$, ta có phép đo $\ket{\psi_2}$ sẽ cho 1 trong 2 kết quả sau:
+\begin{itemize}
+    \item được $i$ với xác suất $\left|\braket{i}{\psi_2}\right|^2 = \left|\frac{\sqrt{6}}{4} - \frac{\sqrt{2}}{4}i \right|^2 = \frac{1}{2}$ và sụp đổ thành $\ket{i}$,
+    \item được $-i$ với xác suất $\left|\braket{-i}{\psi_2} \right|^2 = \left|\frac{\sqrt{6}}{4} + \frac{\sqrt{2}}{4}i \right|^2 = \frac{1}{2}$ và sụp đổ thành $\ket{-i}$.
+\end{itemize}
+
+\subsubsection{Phần b}
+
+Với cơ sở $B_Z$, ta có phép đo $\ket{\psi_2}$ sẽ cho 1 trong 2 kết quả sau:
+\begin{itemize}
+    \item được $0$ với xác suất $\left|\frac{1}{\sqrt{2}}\right|^2 = \frac{1}{2}$ và sụp đổ thành $\ket{0}$,
+    \item được $1$ với xác suất $\left|\frac{1}{\sqrt{2}} e^{i\frac{\pi}{6}}\right|^2 = \left|\frac{1}{\sqrt{2}} \left( \sin{\frac{\pi}{6}} + i \cos{\frac{\pi}{6}}\right)\right|^2 = \frac{1}{2}$ và sụp đổ thành $\ket{1}$.
+\end{itemize}
+
+Với cơ sở $B_X$, ta có phép đo $\ket{\psi_2}$ sẽ cho 1 trong 2 kết quả sau:
+\begin{itemize}
+    \item được $+$ với xác suất $\left|\braket{+}{\psi_2}\right|^2 = \left|\frac{1}{2} \left( 1 + \sin{\frac{\pi}{6}} + i \cos{\frac{\pi}{6}} \right) \right|^2 = \frac{3}{4}$ và sụp đổ thành $\ket{+}$,
+    \item được $-$ với xác suất $\left|\braket{-}{\psi_2} \right|^2 = \left|\frac{1}{2} \left( 1 - \sin{\frac{\pi}{6}} - i \cos{\frac{\pi}{6}} \right) \right|^2 = \frac{1}{4}$ và sụp đổ thành $\ket{-}$.
+\end{itemize}
+
+Với cơ sở $B_Y$, ta có phép đo $\ket{\psi_2}$ sẽ cho 1 trong 2 kết quả sau:
+\begin{itemize}
+    \item được $i$ với xác suất $\left|\braket{i}{\psi_2}\right|^2 = \left|\frac{1}{2} \left( 1 + \cos{\frac{\pi}{6}} - i\sin{\frac{\pi}{6}} \right) \right|^2 = \frac{2+\sqrt{3}}{4}$ và sụp đổ thành $\ket{i}$,
+    \item được $-i$ với xác suất $\left|\braket{-i}{\psi_2} \right|^2 = \left|\frac{1}{2} \left( 1 - \cos{\frac{\pi}{6}} + i\sin{\frac{\pi}{6}} \right) \right|^2 = \frac{2-\sqrt{3}}{4}$và sụp đổ thành $\ket{-i}$.
+\end{itemize}
+
+\subsubsection{Phần c}
+
+Với cơ sở $B_Z$, ta có phép đo $\ket{\psi_3}$ sẽ cho 1 trong 2 kết quả sau:
+\begin{itemize}
+    \item được $0$ với xác suất $\left|\frac{2}{3}\right|^2 = \frac{4}{9}$ và sụp đổ thành $\ket{0}$,
+    \item được $1$ với xác suất $\left|\frac{1 - 2i}{3}\right|^2 = \frac{5}{9}$ và sụp đổ thành $\ket{1}$.
+\end{itemize}
+
+Với cơ sở $B_X$, ta có phép đo $\ket{\psi_3}$ sẽ cho 1 trong 2 kết quả sau:
+\begin{itemize}
+    \item được $+$ với xác suất $\left|\braket{+}{\psi_3}\right|^2 = \left| \frac{\sqrt{2}}{2} - \frac{\sqrt{2}}{3}i \right|^2 = \frac{13}{18}$ và sụp đổ thành $\ket{+}$,
+    \item được $-$ với xác suất $\left|\braket{-}{\psi_3} \right|^2 = \left| \frac{\sqrt{2}}{6} + \frac{\sqrt{2}}{3}i \right|^2 = \frac{5}{18}$ và sụp đổ thành $\ket{-}$.
+\end{itemize}
+
+Với cơ sở $B_Y$, ta có phép đo $\ket{\psi_3}$ sẽ cho 1 trong 2 kết quả sau:
+\begin{itemize}
+    \item được $i$ với xác suất $\left|\braket{i}{\psi_3}\right|^2 = \left| -\frac{\sqrt{2}}{6}i \right|^2 = \frac{1}{18}$ và sụp đổ thành $\ket{i}$,
+    \item được $-i$ với xác suất $\left|\braket{-i}{\psi_3} \right|^2 = \left| \frac{2\sqrt{2}}{3} + \frac{\sqrt{2}}{6}i \right|^2 = \frac{17}{18}$và sụp đổ thành $\ket{-i}$.
+\end{itemize}

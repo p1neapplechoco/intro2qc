@@ -1,0 +1,53 @@
+\documentclass[12pt]{article}
+
+\usepackage{hcmus-report-template}
+
+% Disable indentation on new paragraphs
+\setlength{\parindent}{0pt}
+
+% Line spacing 1.5
+\renewcommand{\baselinestretch}{1.5}
+
+% Define custom commands
+\DeclarePairedDelimiter\bra{\langle}{\rvert}
+\DeclarePairedDelimiter\ket{\lvert}{\rangle}
+\DeclarePairedDelimiterX\braket[2]{\langle}{\rangle}{#1\,\delimsize\vert\,\mathopen{}#2}
+
+% Define course name, report name and report title.
+\newcommand{\coursename}{Nhập môn tính toán lượng tử}
+\newcommand{\reportname}{Tên Báo Cáo Gì Đấy}
+\newcommand{\reporttitle}{Exercise 2}
+
+\newcommand{\studentname}{Nguyễn Thiên Ấn - 23122020}
+\newcommand{\teachername}{ThS. Vũ Quốc Hoàng \\ Nguyễn Ngọc Toàn}
+
+% Header
+\lhead{\reporttitle}
+\rhead{
+Trường Đại học Khoa học Tự nhiên - ĐHQG HCM\\
+\coursename
+}
+
+
+\begin{document}
+
+
+\pagenumbering{roman}
+\input{content/title.tex}
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\tableofcontents
+\pagebreak
+
+\input{content/section1.tex}
+\input{content/section2.tex}
+\input{content/section3.tex}
+\input{content/section4.tex}
+\input{content/section5.tex}
+\input{content/section6.tex}
+\input{content/section7.tex}
+\input{content/section8.tex}
+
+\end{document}
