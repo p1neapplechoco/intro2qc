@@ -113,3 +113,52 @@ $$ \ket{i} = \frac{1}{\sqrt{2}} \left(\ket{0} + i\ket{1}\right), \ket{-i} = \fra
 \end{align*}
 
 \subsubsection{Phần d}
+
+Vì $U$ là ma trận Unita, nên tồn tại 2 vector riêng $\ket{u_1}, \ket{u_2}$ lập thành một cơ sở trực chuẩn với các trị riêng $e^{i\theta_1}, e^{i\theta_2}$ sao cho
+$$ U = e^{i\theta_1}\ket{u_1}\bra{u_1} + e^{i\theta_2}\ket{u_2}\bra{u_2}, \quad U\ket{u_1} = e^{i\theta_1}\ket{u_1}, \quad U\ket{u_2} = e^{i\theta_2}\ket{u_2} $$
+Ta có:
+\[
+U = \begin{bmatrix}
+    \frac{\sqrt{2} - i}{2} & \frac{1}{2} \\
+    -\frac{1}{2} & \frac{\sqrt{2} + i}{2}
+\end{bmatrix}
+=
+\begin{bmatrix}
+    \ket{u_1} & \ket{u_2}
+\end{bmatrix}
+=
+\begin{bmatrix}
+    a_1 & a_2 \\
+    b_1 & b_2
+\end{bmatrix}
+\]
+$$\Rightarrow \ket{u_1} = \begin{bmatrix}
+    \frac{\sqrt{2} - i}{2} \\
+    -\frac{1}{2}
+\end{bmatrix},
+\ket{u_2} = \begin{bmatrix}
+    \frac{1}{2} \\
+    \frac{\sqrt{2} + i}{2}
+\end{bmatrix}
+$$
+
+Ta có:
+\begin{align*}
+    U\ket{u_1} &= e^{i\theta_1}\ket{u_1} \\
+    \Leftrightarrow \begin{bmatrix} \frac{-i\sqrt{2}}{2} \\ \frac{\sqrt{2}}{2} \end{bmatrix} &= \left(\cos{\theta_1} + i \sin{\theta_1}\right) \begin{bmatrix}\frac{\sqrt{2} - i}{2} \\ -\frac{1}{2} \end{bmatrix} \\
+    \Leftrightarrow \frac{1}{2} \left(\cos{\theta_1} + i \sin{\theta_1}\right) \begin{bmatrix}\sqrt{2} - i \\ -1 \end{bmatrix} &= \frac{1}{2} \begin{bmatrix} -i\sqrt{2} \\ \sqrt{2}\end{bmatrix} \\
+    \Leftrightarrow \begin{bmatrix}
+        \sqrt{2} \cos{\theta_1} + \sin{\theta_1} + i \left(\sqrt{2} \sin{\theta_1} - \cos{\theta_1} \right) \\
+        -\cos{\theta_1} - i \sin{\theta_1}
+    \end{bmatrix} &= \begin{bmatrix} -i\sqrt{2} \\ \sqrt{2} \end{bmatrix}
+\end{align*}
+
+$$
+\Rightarrow 
+\begin{cases}
+    \sqrt{2} \cos{\theta_1} + \sin{\theta_1} = 0 \\
+    \sqrt{2} \sin{\theta_1} - \cos{\theta_1} = -\sqrt{2} \\
+    \cos{\theta_1} = -\sqrt{2} \\
+    i\sin{\theta_1} = 0
+\end{cases}
+$$
