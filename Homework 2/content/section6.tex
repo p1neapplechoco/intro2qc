@@ -2,18 +2,65 @@
 
 \subsection{Đề bài}
 
-Cho hệ 2 qubit với trạng thái
+Cho hệ $2$ qubit với trạng thái
 \[
 \ket{\psi} = \frac{1}{2}\ket{00} - \frac{i}{2}\ket{10} + \frac{1}{\sqrt{2}}\ket{11}.
 \]
 Khảo sát các phép đo sau
 
 \begin{itemize}
-    \item[(a)] Đo đồng thời 2 qubit.
-    \item[(b)] Đo qubit 0.
-    \item[(c)] Đo qubit 1.
-    \item[(d)] Đo qubit 0 rồi đo qubit 1 và so kết quả với Câu (a).
-    \item[(e)] Đo qubit 1 rồi đo qubit 0 và so kết quả với Câu (b).
+    \item[(a)] Đo đồng thời $2$ qubit.
+    \item[(b)] Đo qubit $0$.
+    \item[(c)] Đo qubit $1$.
+    \item[(d)] Đo qubit $0$ rồi đo qubit $1$ và so kết quả với Câu (a).
+    \item[(e)] Đo qubit $1$ rồi đo qubit $0$ và so kết quả với Câu (b).
 \end{itemize}
 
 \subsection{Lời giải}
+
+\subsubsection{Phần a}
+Khi đo đồng thời $2$ qubit, ta có:
+\begin{itemize}
+    \item Xác suất ra trạng thái $\ket{00}$ là: $P(00) = \left| \frac{1}{2} \right|^2  = \frac{1}{4} = 25\%$.
+    \item Xác suất ra trạng thái $\ket{01}$ là: $P(01) = \left| 0 \right|^2 = 0\%$.
+    \item Xác suất ra trạng thái $\ket{10}$ là: $P(10) = \left| - \frac{i}{2} \right|^2 = \frac{1}{4} = 25\%$.
+    \item Xác suất ra trạng thái $\ket{11}$ là: $P(11) = \left| \frac{1}{\sqrt{2}} \right|^2 = \frac{1}{2} = 50\%$.
+\end{itemize}
+
+\subsubsection{Phần b}
+Khi chỉ đo qubit $0$, ta có:
+\begin{itemize}
+    \item Xác suất qubit $0$ bằng $0$ là: $P(q_0 = 0) = P(00) + P(01) = \frac{1}{4} + 0 = \frac{1}{4} = 25\%$.
+    \item Xác suất qubit $0$ bằng $1$ là: $P(q_0 = 1) = P(10) + P(11) = \frac{1}{4} + \frac{1}{2} = \frac{3}{4} = 75\%$.
+\end{itemize}
+
+\subsubsection{Phần c}
+Khi chỉ đo qubit $1$, ta có:
+\begin{itemize}
+    \item Xác suất qubit $1$ bằng $0$ là: $P(q_1 = 0) = P(00) + P(10) = \frac{1}{4} + \frac{1}{2} = \frac{3}{4} = 75\%$.
+    \item Xác suất qubit $1$ bằng $1$ là: $P(q_1 = 1) = P(01) + P(11) = 0 + \frac{1}{4} = \frac{1}{4} = 25\%$.
+\end{itemize}
+
+\subsubsection{Phần d}
+
+Đầu tiên, ta đo qubit 0 trước:
+\begin{itemize}
+    \item Qubit 0 được 0 với xác suất: $\left|\frac{1}{2} \ket{0}\right|^2 = \frac{1}{4} = 25\%$ và trạng thái sụp đổ thành $\frac{1}{2} \ket{00}$, sau đó, ta đo qubit 1 chắc chắn sẽ ra 0.
+    \item Qubit 0 được 1 với xác suất: $\left| -\frac{i}{2}\ket{0} +  \frac{1}{\sqrt{2}} \ket{1} \right|^2 = \frac{1}{4} + \frac{1}{2} = \frac{3}{4}$ và trạng thái sụp đổ thành $-\frac{i}{2} \ket{10} + \frac{1}{\sqrt{2}} \ket{11} $, sau đó, ta đo qubit 1:
+    \begin{itemize}
+        \item Xác suất đo tiếp qubit 1 bằng 0 là: $\frac{P(10)}{P(q_1 = 0)} = \frac{1}{3} \approx 66.7\%$.
+        \item Xác suất đo tiếp qubit 1 bằng 1 là: $\frac{P(11)}{P(q_1 = 0)} = \frac{2}{3} \approx 33.3\%$.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Phần d}
+
+Đầu tiên, ta đo qubit 1 trước:
+\begin{itemize}
+    \item Qubit 1 được 0 với xác suất: $\left|\frac{1}{2} \ket{0} - \frac{i}{2}\ket{1}\right|^2 = \frac{1}{2} = 50\%$ và trạng thái sụp đổ thành $\frac{1}{2} \ket{00} - \frac{i}{2}\ket{10}$, sau đó, ta đo qubit 0:
+    \begin{itemize}
+        \item Xác suất đo tiếp qubit 0 bằng 0 là: $\frac{P(00)}{P(q_1 = 0)} = \frac{1}{2} = 50\%$.
+        \item Xác suất đo tiếp qubit 0 bằng 1 là: $\frac{P(10)}{P(q_1 = 0)} = \frac{1}{2} = 50\%$.
+    \end{itemize}
+    \item Qubit 1 được 1 với xác suất $\left| \frac{1}{\sqrt{2}} \ket{1} \right| = \frac{1}{2}$ và trạng thái sụp đổ thành $\frac{1}{\sqrt{2}} \ket{11}$, sau đó, ta đo qubit 0 chắc chắn sẽ ra 1.
+\end{itemize}
