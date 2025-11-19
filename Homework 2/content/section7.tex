@@ -12,7 +12,88 @@ Khảo sát phép toán 2 qubit $U = H \otimes X$.
     \[
         \ket{\psi} = \frac{1}{4}\ket{00} + \frac{1}{2}\ket{01} + \frac{1}{\sqrt{2}}\ket{10} + \frac{\sqrt{3}}{4}\ket{11}.
     \]  
-     
 \end{itemize}
 
 \subsection{Lời giải}
+Ta có: 
+\[
+    H = \frac{1}{\sqrt{2}} 
+    \begin{bmatrix}
+        1 & 1 \\
+        1 & -1
+    \end{bmatrix}, 
+    \quad
+    X = 
+    \begin{bmatrix}
+        0 & 1 \\
+        1 & 0
+    \end{bmatrix}
+\]
+
+\subsubsection{Phần a}
+Các vector cơ sở tính toán là $\ket{00}, \ket{01}, \ket{10}, \ket{11}$, ta có:
+\begin{itemize}
+    \item \textbf{Với trạng thái $\ket{00}$:}
+    \[
+    U\ket{00} = \left(H\ket{0}\right) \otimes \left(X\ket{0}\right) = \ket{+} \otimes \ket{1} = \frac{1}{\sqrt{2}} \left(\ket{0} + \ket{1}\right) \otimes \ket{1} = \frac{1}{\sqrt{2}} \ket{01} + \frac{1}{\sqrt{2}} \ket{11} 
+    \]
+    \item \textbf{Với trạng thái $\ket{01}$:}
+    \[
+    U\ket{01} = \left(H\ket{0}\right) \otimes \left(X\ket{1}\right) = \ket{+} \otimes \ket{0} = \frac{1}{\sqrt{2}} \left(\ket{0} + \ket{1}\right) \otimes \ket{0} = \frac{1}{\sqrt{2}} \ket{00} + \frac{1}{\sqrt{2}} \ket{10} 
+    \]
+    \item \textbf{Với trạng thái $\ket{10}$:}
+    \[
+    U\ket{10} = \left(H\ket{1}\right) \otimes \left(X\ket{0}\right) = \ket{-} \otimes \ket{1} = \frac{1}{\sqrt{2}} \left(\ket{0} - \ket{1}\right) \otimes \ket{1} = \frac{1}{\sqrt{2}} \ket{01} - \frac{1}{\sqrt{2}} \ket{11} 
+    \]
+    \item \textbf{Với trạng thái $\ket{11}$:}
+    \[
+    U\ket{11} = \left(H\ket{1}\right) \otimes \left(X\ket{1}\right) = \ket{-} \otimes \ket{0} = \frac{1}{\sqrt{2}} \left(\ket{0} - \ket{1}\right) \otimes \ket{0} = \frac{1}{\sqrt{2}} \ket{00} - \frac{1}{\sqrt{2}} \ket{10} 
+    \]
+\end{itemize}
+
+\subsubsection{Phần b}
+
+Từ Câu (a), ta được:
+\begin{align*}
+    U &= \begin{bmatrix}
+        U\ket{00} & U\ket{01} & U\ket{10} & U\ket{11}
+    \end{bmatrix} \\
+    \Rightarrow U &= \frac{1}{\sqrt{2}}
+    \begin{bmatrix}
+        0 & 1 & 0 & 1 \\
+        1 & 0 & 1 & 0 \\
+        0 & 1 & 0 & -1 \\
+        1 & 0 & -1 & 0
+    \end{bmatrix}
+\end{align*}
+
+\subsubsection{Phần c}
+
+Ma trận biểu diễn của $U$ là:
+\begin{align*}
+    U &= H \otimes X \\
+    &= \frac{1}{\sqrt{2}} \begin{bmatrix}
+        1 & 1 \\
+        1 & -1
+    \end{bmatrix}
+    \otimes
+    \begin{bmatrix}
+        0 & 1 \\
+        1 & 0
+    \end{bmatrix} \\
+    &= \frac{1}{\sqrt{2}}
+    \begin{bmatrix}
+        0 & 1 & 0 & 1 \\
+        1 & 0 & 1 & 0 \\
+        0 & 1 & 0 & -1 \\
+        1 & 0 & -1 & 0
+    \end{bmatrix}
+\end{align*}
+
+\subsubsection{Phần d}
+Ta có:
+\begin{align*}
+    U\ket{\psi} &= \frac{1}{4}U\ket{00} + \frac{1}{2}U\ket{01} + \frac{1}{\sqrt{2}}U\ket{10} + \frac{\sqrt{3}}{4}U\ket{11} \\
+    &= \frac{1}{4} \left( \frac{1}{\sqrt{2}} \ket{01} + \frac{1}{\sqrt{2}} \ket{11} \right) + \frac{1}{2} \left( \frac{1}{\sqrt{2}} \ket{00} + \frac{1}{\sqrt{2}} \ket{10}  \right) + \\ & \qquad \qquad \frac{1}{\sqrt{2}} \left( \frac{1}{\sqrt{2}} \ket{01} - \frac{1}{\sqrt{2}} \ket{11} \right) + \frac{\sqrt{3}}{4} \left( \frac{1}{\sqrt{2}} \ket{00} - \frac{1}{\sqrt{2}} \ket{10} \right) \\ 
+    \Rightarrow U\ket{\psi} &= \frac{\sqrt{6} + 2\sqrt{2}}{8} \ket{00} + \frac{4 +\sqrt{2}}{8} \ket{01} - \frac{\sqrt{6} - 2\sqrt{2}}{8} \ket{10} - \frac{4 - \sqrt{2}}{8} \ket{11}
+\end{align*}
