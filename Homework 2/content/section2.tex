@@ -25,7 +25,7 @@ Ta có:
 \Rightarrow
 \left\{
 \begin{aligned}
-\theta_1 &= \frac{\pi}{3},  &\phi_1 &= \frac{\pi}{6} \\
+\theta_1 &= \frac{\pi}{3},  &\phi_1 &= 0 \\
 \theta_2 &= \frac{\pi}{2},  &\phi_2 &= \frac{\pi}{6} \\
 \theta_3 &= 2\arccos{\frac{2}{3}},  &\phi_3 &= \arctan(-2)
 \end{aligned}
@@ -35,7 +35,7 @@ Ta có:
 $\Rightarrow$ dạng Bloch của các trạng thái lượng tử $\ket{\psi_1}, \ket{\psi_2}, \ket{\psi_3}$ là:
 \[
 \begin{cases}
-    \ket{\psi_1} = \cos \left(\frac{\pi}{6}\right) \ket{0} + e^{i\frac{\pi}{6}} \sin \left(\frac{\pi}{6}\right) \ket{1} \\
+    \ket{\psi_1} = \cos \left(\frac{\pi}{6}\right) \ket{0} + e^{i0} \sin \left(\frac{\pi}{6}\right) \ket{1} \\
     \ket{\psi_2} = \cos \left(\frac{\pi}{4}\right) \ket{0} + e^{i\frac{\pi}{6}} \sin \left(\frac{\pi}{4}\right) \ket{1} \\
     \ket{\psi_3} = \cos \left(\arccos{\frac{2}{3}}\right) \ket{0} + e^{i\arctan(-2)} \sin \left(\arccos{\frac{2}{3}}\right) \ket{1} \\
 \end{cases}
@@ -43,49 +43,31 @@ $\Rightarrow$ dạng Bloch của các trạng thái lượng tử $\ket{\psi_1},
 
 \textbf{Mặt cầu Bloch:}
 \begin{center}
-    \begin{blochsphere}[radius=4cm,tilt=15,rotation=-20,opacity=0.08]
+    \begin{blochsphere}[radius=4cm,tilt=30,rotation=-110,opacity=0.08]
         % Vẽ mặt cầu
-        \drawBallGrid[style={opacity=0.2}]{20}{20};
+        \drawBallGrid[style={opacity=0.2}]{30}{30};
 
-        %% vẽ các trục tọa độ
-        \labelLatLon{up}{90}{0};
-        \labelLatLon{down}{-90}{0};
-        \labelLatLon{right}{0}{0};
-        \labelLatLon{left}{0}{180};
-        \labelLatLon{front}{0}{90};
-        \labelLatLon{back}{0}{-90};
+        % Vẽ các trục tọa độ
+        %% Trục Z
+        \drawAxis[style={gray, dashed}]{0}{0};
+        %% Trục Y
+        \drawAxis[style={gray, dashed}]{90}{90};
+        %% Trục X
+        \drawAxis[style={gray, dashed}]{90}{0}; 
+        
+        \node at (0, 4.5) {$\ket{0}$};
+        \node at (0, -4.5) {$\ket{1}$};
+        \node at (4, -1) {$y$};
+        \node at (-1.5, -2) {$x$};
 
-        %% label trục
-        \node[above, yshift=2pt] at (up) {{\small $\ket{0}$ }};
-        \node[below, yshift=-2pt] at (down) {{\small $\ket{1}$ }};
-        \node[right] at (right) {{\small $\ket{i}$ }};
-        \node[left] at (left) {{\small $\ket{-i}$ }};
-        \node[below] at (front) {{\small $\ket{+}$ }};
-        \node[above] at (back) {{\small $\ket{-}$ }};
+        % Vẽ các trạng thái lượng tử (phi = -phi theo convention của gói blochsphere)
+        \drawStatePolar[statecolor=red, statewidth=1.5pt]{psi1}{60}{0};
+        \node at (-1, 0.5) {$\ket{\psi_1}$};
 
-        %% nối các trục
-        \draw[thick, ->] (down) -> (up);
-        \draw[thick, ->] (left) -> (right);
-        \draw[thick, ->] (back) -> (front);
+        \drawStatePolar[statecolor=blue, statewidth=1.5pt]{psi2}{90}{-30};
+        \node at (1.25, -2) {$\ket{\psi_2}$};
 
-        % Vẽ các trạng thái
-
-        %% psi_1
-        \drawLatitudeCircle[style={dashed, black, ultra thin}]{60};
-        \drawLongitudeCircle[style={dashed, black, ultra thin}]{30};
-        \labelLatLon{psi1}{60}{30};
-        \filldraw[black] (psi1) circle (1pt) node[below left] {\small $\ket{\psi_1}$};
-
-        %% psi_2
-        \drawLatitudeCircle[style={dashed, black, ultra thin}]{45};
-        \drawLongitudeCircle[style={dashed, black, ultra thin}]{30};
-        \labelLatLon{psi2}{45}{30};
-        \filldraw[black] (psi2) circle (1pt) node[below right] {\small $\ket{\psi_2}$};
-
-        %% psi_3
-        \drawLatitudeCircle[style={dashed, black, ultra thin}]{48.189685};
-        \drawLongitudeCircle[style={dashed, black, ultra thin}]{-63.434949};
-        \labelLatLon{psi3}{48.189685}{-63.434949};
-        \filldraw[black] (psi3) circle (1pt) node[above right] {\small $\ket{\psi_3}$};
+        \drawStatePolar[statecolor=green, statewidth=1.5pt]{psi3}{96.38}{63.43};
+        \node at (-4, 0) {$\ket{\psi_3}$};
     \end{blochsphere}
 \end{center}

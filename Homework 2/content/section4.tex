@@ -2,12 +2,54 @@
 
 \subsection{Đề bài}
 
-Khảo sát phép đo theo các cơ sở $B_Z = \{ \ket{0}, \ket{1}\}, B_X = \{\ket{+}, \ket{-} \}, B_Y = \{\ket{i}, \ket{-i} \}$ của các trạng thái lượng tử sau:
-
+Từ trạng thái đầu vào $\ket{0}$,
 \begin{itemize}
-    \item $\ket{\psi_1} = \frac{\sqrt{3}}{2} \ket{0} + \frac{1}{2} \ket{1}$.
-    \item $\ket{\psi_2} = \frac{1}{\sqrt{2}} \left( \ket{0} + e^{i \frac{\pi}{6}}\ket{1} \right)$.
-    \item $\ket{\psi_3} = \frac{2}{3} \ket{0} + \frac{1 - 2i}{3} \ket{1}$.
+    \item[(a)] Vẽ mạch mô tả tính toán $HYTHX$.
+    \item[(b)] Tính đầu ra của Câu (a).
+    \item[(c)] Thêm phép đo ở cuối mạch của Câu (a) và tính xác suất được $1$. 
 \end{itemize}
 
 \subsection{Lời giải}
+
+\subsubsection{Phần a}
+
+Mạch tính toán $HYTHX$ được mô tả như sau:
+
+\begin{center}
+    \begin{quantikz}
+        \lstick{$\ket{0}$} & \gate{X} & \gate{H} & \gate{T} & \gate{Y} & \gate{H} &  \\
+    \end{quantikz}
+\end{center}
+
+\subsubsection{Phần b}
+
+Gọi đầu ra của mạch tính toán trên là $\ket{\psi}$, ta có:
+\begin{align*}
+    \ket{\psi} &= HYTHX \ket{0} \\
+    &= HYTH \ket{1} \\
+    &= HYT \ket{-} \\
+    &= HY \left( \frac{1}{\sqrt{2}} \ket{0} - e^{i \frac{\pi}{4}} \frac{1}{\sqrt{2}} \ket{1} \right) \\
+    &= H \left( \frac{i}{\sqrt{2}} \ket{1} + e^{i \frac{\pi}{4}} \frac{i}{\sqrt{2}} \ket{0} \right) \\
+    \Rightarrow \ket{\psi} &= \frac{i}{\sqrt{2}} \left( \ket{-} + e^{i \frac{\pi}{4}} \ket{+} \right)
+\end{align*}
+
+\subsubsection{Phần c}
+
+Thêm phép đo ở cuối mạch, ta có mạch tính toán mới sau:
+\begin{center}
+    \begin{quantikz}
+        \lstick{$\ket{0}$} & \gate{X} & \gate{H} & \gate{T} & \gate{Y} & \gate{H} & \meter{} & \setwiretype{c} \\
+    \end{quantikz}
+\end{center}
+
+Ta có:
+\begin{align*}
+    \ket{\psi} &= \frac{i}{\sqrt{2}} \left( \ket{-} + e^{i \frac{\pi}{4}} \ket{+} \right) \\
+    &= \frac{i}{\sqrt{2}} \left[ \left( \frac{1}{\sqrt{2}} \ket{0} - \frac{1}{\sqrt{2}} \ket{1} \right) + \left( \frac{1}{\sqrt{2}} + \frac{i}{\sqrt{2}} \right) \left( \frac{1}{\sqrt{2}} \ket{0} + \frac{1}{\sqrt{2}} \ket{1} \right) \right] \\
+    \Rightarrow \ket{\psi} &= \frac{-1 + i(\sqrt{2} + 1)}{2\sqrt{2}} \ket{0} + \frac{-1 + i(- \sqrt{2} + 1)}{2\sqrt{2}} \ket{1}  
+\end{align*}
+
+$\Rightarrow$ Xác suất để phép đo được 1 là:
+\[
+P(1) = \left| \frac{-1 + i(- \sqrt{2} + 1)}{2\sqrt{2}} \right|^2 = \frac{2 - \sqrt{2}}{8}
+\]

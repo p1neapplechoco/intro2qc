@@ -2,12 +2,238 @@
 
 \subsection{Đề bài}
 
-Khảo sát phép đo theo các cơ sở $B_Z = \{ \ket{0}, \ket{1}\}, B_X = \{\ket{+}, \ket{-} \}, B_Y = \{\ket{i}, \ket{-i} \}$ của các trạng thái lượng tử sau:
-
+Cho biết các trạng thái sau là tách được hay vướng, nếu tách được thì biểu diễn trên mặt cầu Bloch
 \begin{itemize}
-    \item $\ket{\psi_1} = \frac{\sqrt{3}}{2} \ket{0} + \frac{1}{2} \ket{1}$.
-    \item $\ket{\psi_2} = \frac{1}{\sqrt{2}} \left( \ket{0} + e^{i \frac{\pi}{6}}\ket{1} \right)$.
-    \item $\ket{\psi_3} = \frac{2}{3} \ket{0} + \frac{1 - 2i}{3} \ket{1}$.
+    \item[(a)] $\frac{1}{\sqrt{2}}\left(\ket{01} + \ket{10}\right)$.
+    \item[(b)] $\frac{1}{\sqrt{2}}\left(\ket{10} + i\ket{11}\right)$.
+    \item[(c)] $\frac{1}{4}\left(3\ket{00} - \sqrt{3}\ket{01} + \sqrt{3}\ket{10} - \ket{11}\right)$.
+    \item[(d)] $\frac{1}{\sqrt{3}}\ket{0}\ket{+} + \sqrt{\frac{2}{3}}\ket{1}\ket{-}$.   
 \end{itemize}
 
 \subsection{Lời giải}
+
+\subsubsection{Phần a}
+
+Giả sử $\ket{\phi_1}$ tách được, tức $\exists \ket{\psi_1}, \ket{\psi_2}$ sao cho $\ket{\phi_1} = \ket{\psi_1} \otimes \ket{\psi_2}$. Ta có:
+\begin{align*}
+    \ket{\phi_1} &= \begin{bmatrix}
+        a \\ b
+    \end{bmatrix}
+    \otimes
+    \begin{bmatrix}
+        c \\ d
+    \end{bmatrix} \\
+    \Leftrightarrow 
+    \begin{bmatrix}
+        0 \\ \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \\ 0
+    \end{bmatrix}
+    &= 
+    \begin{bmatrix}
+        ac \\ ad \\ bc \\ bd
+    \end{bmatrix} \\
+    \Rightarrow &
+    \begin{cases}
+        ac = bd = 0 \\
+        ad = bc = \frac{1}{\sqrt{2}}
+    \end{cases}
+\end{align*}
+
+$\Rightarrow$ vô lí $\Rightarrow \ket{\phi_1}$ là trạng thái vướng. 
+
+\subsubsection{Phần b}
+
+Ta có:
+\begin{align*}
+    \ket{\phi_2} &= \frac{1}{\sqrt{2}} \left( \ket{10} + i\ket{11} \right) \\
+    &= \ket{1} \otimes \left( \frac{1}{\sqrt{2}} \ket{0} + \frac{i}{\sqrt{2}} \ket{1} \right) \\
+    \Rightarrow \ket{\phi_2} &= \ket{1} \otimes \ket{i}
+\end{align*}
+
+$\Rightarrow \ket{\phi_2}$ tách được, ta có dạng Bloch của $\ket{\phi_2}$:
+\[
+\begin{cases}
+    \ket{1} = \cos\left( \frac{\pi}{2} \right) \ket{0} + e^{i0} \sin\left( \frac{\pi}{2} \right)\ket{1} \\
+    \ket{i} = \cos\left( \frac{\pi}{4} \right) \ket{0} + e^{i\frac{\pi}{2}} \sin\left( \frac{\pi}{4} \right)\ket{1}
+\end{cases} 
+\Rightarrow
+\begin{cases}
+    \theta_1 = \pi, \quad \phi_1 = 0 \\
+    \theta_2 = \frac{\pi}{2}, \quad \phi_1 = \frac{\pi}{2} \\
+\end{cases}
+\]
+
+\textbf{Mặt cầu Bloch:}
+
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}{0.48\textwidth}
+    \centering
+    \begin{blochsphere}[radius=4cm,tilt=30,rotation=-110,opacity=0.08]
+        % Vẽ mặt cầu
+        \drawBallGrid[style={opacity=0.2}]{30}{30};
+
+        % Vẽ các trục tọa độ
+        %% Trục Z
+        \drawAxis[style={gray, dashed}]{0}{0};
+        %% Trục Y
+        \drawAxis[style={gray, dashed}]{90}{90};
+        %% Trục X
+        \drawAxis[style={gray, dashed}]{90}{0}; 
+        
+        \node at (0, 4.5) {$\ket{0}$};
+        \node at (0, -4.5) {$\ket{1}$};
+        \node at (4, -1) {$y$};
+        \node at (-1.5, -2) {$x$};
+
+        % Vẽ các trạng thái lượng tử (phi = -phi theo convention của gói blochsphere)
+        \drawStatePolar[statecolor=blue, statewidth=1.5pt]{phi2_1}{180}{0};
+    \end{blochsphere}
+    \caption{Qubit 0}\label{fig:phi2_1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+    \centering
+    \begin{blochsphere}[radius=4cm,tilt=30,rotation=-110,opacity=0.08]
+        % Vẽ mặt cầu
+        \drawBallGrid[style={opacity=0.2}]{30}{30};
+
+        % Vẽ các trục tọa độ
+        %% Trục Z
+        \drawAxis[style={gray, dashed}]{0}{0};
+        %% Trục Y
+        \drawAxis[style={gray, dashed}]{90}{90};
+        %% Trục X
+        \drawAxis[style={gray, dashed}]{90}{0}; 
+        
+        \node at (0, 4.5) {$\ket{0}$};
+        \node at (0, -4.5) {$\ket{1}$};
+        \node at (4, -1) {$y$};
+        \node at (-1.5, -2) {$x$};
+
+        % Vẽ các trạng thái lượng tử (phi = -phi theo convention của gói blochsphere)
+        \drawStatePolar[statecolor=red, statewidth=1.5pt]{phi2_2}{90}{-90};
+    \end{blochsphere}
+    \caption{Qubit 1}\label{fig:phi2_2}
+    \end{subfigure}
+\end{figure}
+
+\subsubsection{Phần c}
+Ta có:
+\begin{align*}
+    \ket{\phi_3} &= \frac{1}{4} \left( 3\ket{00} - \sqrt{3}\ket{01} + \sqrt{3}\ket{10} - \ket{11} \right) \\
+    &= \frac{1}{4} \left[ \sqrt{3} \ket{0} \otimes \left( \sqrt{3} \ket{0} - \ket{1} \right) + \ket{1} \otimes \left( \sqrt{3} \ket{0} - \ket{1} \right) \right] \\
+    &= \frac{1}{4} \left( \sqrt{3}\ket{0} + \ket{1} \right) \otimes \left( \sqrt{3} \ket{0} - \ket{1} \right) \\
+    \Rightarrow \ket{\phi_3} &= \left( \frac{\sqrt{3}}{2} \ket{0} + \frac{1}{2} \ket{1} \right) \otimes \left( \frac{\sqrt{3}}{2} \ket{0} - \frac{1}{2} \ket{1} \right)
+\end{align*}
+
+$\Rightarrow \ket{\phi_3}$ tách được, ta có dạng Bloch của $\ket{\phi_3}$:
+\[
+\begin{cases}
+    \ket{\psi_1} = \frac{\sqrt{3}}{2} \ket{0} + \frac{1}{2} \ket{1} = \cos\left( \frac{\pi}{6} \right) \ket{0} + e^{i0} \sin\left( \frac{\pi}{6} \right)\ket{1} \\
+    \ket{\psi_2} = \frac{\sqrt{3}}{2} \ket{0} - \frac{1}{2} \ket{1} = \cos\left( \frac{\pi}{6} \right) \ket{0} + e^{i\pi} \sin\left( \frac{\pi}{6} \right)\ket{1}
+\end{cases}
+\Rightarrow
+\begin{cases}
+    \theta_1 = \frac{\pi}{3}, \quad \phi_1 = 0 \\
+    \theta_2 = \frac{\pi}{3}, \quad \phi_2 = \pi \\
+\end{cases}
+\]
+
+\textbf{Mặt cầu Bloch:}
+
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}{0.48\textwidth}
+    \centering
+    \begin{blochsphere}[radius=4cm,tilt=30,rotation=-110,opacity=0.08]
+        % Vẽ mặt cầu
+        \drawBallGrid[style={opacity=0.2}]{30}{30};
+
+        % Vẽ các trục tọa độ
+        %% Trục Z
+        \drawAxis[style={gray, dashed}]{0}{0};
+        %% Trục Y
+        \drawAxis[style={gray, dashed}]{90}{90};
+        %% Trục X
+        \drawAxis[style={gray, dashed}]{90}{0}; 
+        
+        \node at (0, 4.5) {$\ket{0}$};
+        \node at (0, -4.5) {$\ket{1}$};
+        \node at (4, -1) {$y$};
+        \node at (-1.5, -2) {$x$};
+
+        % Vẽ các trạng thái lượng tử (phi = -phi theo convention của gói blochsphere)
+        \drawStatePolar[statecolor=blue, statewidth=1.5pt]{phi3_1}{60}{0};
+    \end{blochsphere}
+    \caption{Qubit 0}
+    \label{fig:phi3_1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+    \centering
+    \begin{blochsphere}[radius=4cm,tilt=30,rotation=-110,opacity=0.08]
+        % Vẽ mặt cầu
+        \drawBallGrid[style={opacity=0.2}]{30}{30};
+
+        % Vẽ các trục tọa độ
+        %% Trục Z
+        \drawAxis[style={gray, dashed}]{0}{0};
+        %% Trục Y
+        \drawAxis[style={gray, dashed}]{90}{90};
+        %% Trục X
+        \drawAxis[style={gray, dashed}]{90}{0}; 
+        
+        \node at (0, 4.5) {$\ket{0}$};
+        \node at (0, -4.5) {$\ket{1}$};
+        \node at (4, -1) {$y$};
+        \node at (-1.5, -2) {$x$};
+
+        % Vẽ các trạng thái lượng tử (phi = -phi theo convention của gói blochsphere)
+        \drawStatePolar[statecolor=red, statewidth=1.5pt]{phi3_2}{60}{-180};
+    \end{blochsphere}
+    \caption{Qubit 1}
+    \label{fig:phi3_2}
+    \end{subfigure}
+\end{figure}
+
+\subsubsection{Phần d}
+
+Ta có:
+\begin{align*}
+    \ket{\phi_4} &= \frac{1}{\sqrt{3}}\ket{0}\ket{+} + \sqrt{\frac{2}{3}}\ket{1}\ket{-} \\
+    &= \frac{1}{\sqrt{3}} \ket{0} \otimes \left( \frac{1}{\sqrt{2}} \ket{0} + \frac{1}{\sqrt{2}} \ket{1} \right) + \sqrt{\frac{2}{3}} \ket{1} \otimes \left( \frac{1}{\sqrt{2}} \ket{0} - \frac{1}{\sqrt{2}} \ket{1} \right) \\
+    &= \frac{1}{\sqrt{6}} \ket{00} + \frac{1}{\sqrt{6}} \ket{01} + \frac{1}{\sqrt{3}} \ket{10} -\frac{1}{\sqrt{3}} \ket{11} \\
+\end{align*}
+
+Giả sử $\ket{\phi_4}$ tách được, tức $\exists \ket{\psi_1}, \ket{\psi_2}$ sao cho $\ket{\phi_4} = \ket{\psi_1} \otimes \ket{\psi_2}$. Ta có:
+\begin{align*}
+    \ket{\phi_4} &= \begin{bmatrix}
+        a \\ b
+    \end{bmatrix}
+    \otimes
+    \begin{bmatrix}
+        c \\ d
+    \end{bmatrix} \\
+    \Leftrightarrow 
+    \begin{bmatrix}
+        \frac{1}{\sqrt{6}} \\ \frac{1}{\sqrt{6}} \\ \frac{1}{\sqrt{3}} \\ -\frac{1}{\sqrt{3}}
+    \end{bmatrix}
+    &= 
+    \begin{bmatrix}
+        ac \\ ad \\ bc \\ bd
+    \end{bmatrix} \\
+    \Rightarrow &
+    \begin{cases}
+        ac = ad = \frac{1}{\sqrt{6}} \\
+        bc = -bd = \frac{1}{\sqrt{3}}
+    \end{cases} \\
+    \Rightarrow &
+    \begin{cases}
+        \frac{ac}{ad} = \frac{c}{d} = 1 \\
+        \frac{bc}{bd} = \frac{c}{d} = -1
+    \end{cases}
+\end{align*}
+
+$\Rightarrow$ vô lí $\Rightarrow \ket{\phi_4}$ là trạng thái vướng.
