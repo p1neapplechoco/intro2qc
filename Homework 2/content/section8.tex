@@ -13,3 +13,55 @@ Xét trạng thái 3 qubit
 \end{itemize}  
 
 \subsection{Lời giải}
+
+\subsubsection{Phần a}
+Giả sử trạng thái $\ket{GHZ}$ tách được, suy ra $\exists a_0, a_1, a_2, b_0, b_1, b_2$ thoả:
+\[
+\ket{GHZ} = (a_0 \ket{0} + b_0 \ket{1}) \otimes (a_1 \ket{0} + b_1 \ket{1}) \otimes (a_2 \ket{0} + b_2 \ket{1}) = \frac{1}{\sqrt{2}}\ket{000} + \frac{1}{\sqrt{2}}\ket{111}.
+\]
+Đồng nhất hệ số ta được:
+\[
+\begin{cases}
+    a_0 a_1 a_2 = \frac{1}{\sqrt{2}} \\
+    b_0 b_1 b_2 = \frac{1}{\sqrt{2}} \\
+    a_0 a_1 b_0 = 0 \\
+    a_0 a_1 b_1 = 0 \\
+    \ldots
+\end{cases}
+\Rightarrow
+\begin{cases}
+    a_0, a_1, a_2 \neq 0 \\
+    b_0, b_1, b_2 \neq 0 \\
+    a_0 a_1 b_0 = 0 \\
+    a_0 a_1 b_1 = 0 \\
+    \ldots
+\end{cases}
+\]
+$\Rightarrow$ vô lí, suy ra $\ket{GHZ}$ là trạng thái vướng.
+
+\subsubsection{Phần b}
+Khi chỉ đo qubit 0, ta có:
+\begin{itemize}
+    \item Xác suất qubit 0 bằng 0 là: $P(q_0 = 0) = \left| \frac{1}{\sqrt{2}} \right|^2 = \frac{1}{2} = 50\%$.
+    \item Xác suất qubit 0 bằng 1 là: $P(q_0 = 1) = \left| \frac{1}{\sqrt{2}} \right|^2 = \frac{1}{2} = 50\%$.
+\end{itemize}
+
+Khi chỉ đo qubit 1, ta có:
+\begin{itemize}
+    \item Xác suất qubit 1 bằng 0 là: $P(q_1 = 0) = \left| \frac{1}{\sqrt{2}} \right|^2 = \frac{1}{2} = 50\%$.
+    \item Xác suất qubit 1 bằng 1 là: $P(q_1 = 1) = \left| \frac{1}{\sqrt{2}} \right|^2 = \frac{1}{2} = 50\%$.
+\end{itemize}
+
+Khi chỉ đo qubit 2, ta có:
+\begin{itemize}
+    \item Xác suất qubit 2 bằng 0 là: $P(q_2 = 0) = \left| \frac{1}{\sqrt{2}} \right|^2 = \frac{1}{2} = 50\%$.
+    \item Xác suất qubit 2 bằng 1 là: $P(q_2 = 1) = \left| \frac{1}{\sqrt{2}} \right|^2 = \frac{1}{2} = 50\%$.
+\end{itemize}
+
+\textit{Nhận xét:} Mặc dù kết quả đo của từng cá nhân là ngẫu nhiên, tuy nhiên chúng lại có sự tương quan hoàn toàn với nhau.
+\begin{itemize}
+    \item Nếu ta đo qubit 0 được 0, trạng thái khi đó sẽ sụp đổ về $\ket{000}$, qubit 1 và qubit 2 khi đó cũng sẽ là 0.
+    \item Ngược lại, nếu ta đo qubit 0 được 1, trạng thái khi đó sẽ sụp đổ về $\ket{111}$, qubit 1 và qubit 2 khi đó cũng sẽ là 1.
+\end{itemize}
+
+\subsubsection{Phần c}
