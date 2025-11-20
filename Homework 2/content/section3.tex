@@ -114,51 +114,71 @@ $$ \ket{i} = \frac{1}{\sqrt{2}} \left(\ket{0} + i\ket{1}\right), \ket{-i} = \fra
 
 \subsubsection{Phần d}
 
-Vì $U$ là ma trận Unita, nên tồn tại 2 vector riêng $\ket{u_1}, \ket{u_2}$ lập thành một cơ sở trực chuẩn với các trị riêng $e^{i\theta_1}, e^{i\theta_2}$ sao cho
-$$ U = e^{i\theta_1}\ket{u_1}\bra{u_1} + e^{i\theta_2}\ket{u_2}\bra{u_2}, \quad U\ket{u_1} = e^{i\theta_1}\ket{u_1}, \quad U\ket{u_2} = e^{i\theta_2}\ket{u_2} $$
-Ta có:
+Vì $U$ unita nên tồn tại $2$ vector riêng $\ket{u_1}, \ket{u_2}$ tạo thành 1 cơ sở trực chuẩn với các trị riêng tương ứng $e^{i\theta_1}, e^{i\theta_2}$, khi đó:
 \[
-U = \begin{bmatrix}
-    \frac{\sqrt{2} - i}{2} & \frac{1}{2} \\
-    -\frac{1}{2} & \frac{\sqrt{2} + i}{2}
-\end{bmatrix}
-=
-\begin{bmatrix}
-    \ket{u_1} & \ket{u_2}
-\end{bmatrix}
-=
-\begin{bmatrix}
-    a_1 & a_2 \\
-    b_1 & b_2
-\end{bmatrix}
+U\ket{u_1} = e^{i\theta_1} \ket{u_1} \equiv \ket{u_1}, U\ket{u_2} = e^{i\theta_2} \ket{u_2} \equiv \ket{u_2}.
 \]
-$$\Rightarrow \ket{u_1} = \begin{bmatrix}
-    \frac{\sqrt{2} - i}{2} \\
-    -\frac{1}{2}
-\end{bmatrix},
-\ket{u_2} = \begin{bmatrix}
-    \frac{1}{2} \\
-    \frac{\sqrt{2} + i}{2}
-\end{bmatrix}
-$$
 
-Ta có:
+Ta cần tìm 2 trị riêng và vector riêng của $U$, ta có ma trận đặc trưng sau:
 \begin{align*}
-    U\ket{u_1} &= e^{i\theta_1}\ket{u_1} \\
-    \Leftrightarrow \begin{bmatrix} \frac{-i\sqrt{2}}{2} \\ \frac{\sqrt{2}}{2} \end{bmatrix} &= \left(\cos{\theta_1} + i \sin{\theta_1}\right) \begin{bmatrix}\frac{\sqrt{2} - i}{2} \\ -\frac{1}{2} \end{bmatrix} \\
-    \Leftrightarrow \frac{1}{2} \left(\cos{\theta_1} + i \sin{\theta_1}\right) \begin{bmatrix}\sqrt{2} - i \\ -1 \end{bmatrix} &= \frac{1}{2} \begin{bmatrix} -i\sqrt{2} \\ \sqrt{2}\end{bmatrix} \\
-    \Leftrightarrow \begin{bmatrix}
-        \sqrt{2} \cos{\theta_1} + \sin{\theta_1} + i \left(\sqrt{2} \sin{\theta_1} - \cos{\theta_1} \right) \\
-        -\cos{\theta_1} - i \sin{\theta_1}
-    \end{bmatrix} &= \begin{bmatrix} -i\sqrt{2} \\ \sqrt{2} \end{bmatrix}
+    U - \lambda &= \frac{1}{2} \begin{bmatrix}
+        \sqrt{2} - i - 2 \lambda & 1 \\
+        -1 & \sqrt{2} + i - 2 \lambda
+    \end{bmatrix} \\
+    \Leftrightarrow \det(U - \lambda I) &= \frac{1}{4} \left[ \left( \sqrt{2} - i - 2 \lambda \right) \left( \sqrt{2} + i - 2 \lambda \right) + 1 \right] \\
+    &= \frac{1}{4} \left( 4 \lambda^2 - 4\sqrt{2}\lambda + 4 \right) = 0 \\
+    &\Rightarrow \begin{cases}
+        \lambda_1 = \frac{\sqrt{2} + \sqrt{2}i}{2} = e^{i\frac{\pi}{4}} \\
+        \lambda_2 = \frac{\sqrt{2} - \sqrt{2}i}{2} = e^{-i\frac{\pi}{4}} \\
+    \end{cases}
 \end{align*}
 
-$$
-\Rightarrow 
-\begin{cases}
-    \sqrt{2} \cos{\theta_1} + \sin{\theta_1} = 0 \\
-    \sqrt{2} \sin{\theta_1} - \cos{\theta_1} = -\sqrt{2} \\
-    \cos{\theta_1} = -\sqrt{2} \\
-    i\sin{\theta_1} = 0
-\end{cases}
-$$
+Ta có:
+\begin{itemize}
+    \item Với $\lambda_1$: $\left( U - \lambda_1 I \right) \ket{u_1} = 0$
+    \begin{align*}
+        &\Rightarrow \frac{1}{2} \begin{bmatrix}
+            -i\left( 1 + \sqrt{2} \right) & 1 \\
+            -1 & i\left( 1 - \sqrt{2} \right)
+        \end{bmatrix}
+        \begin{bmatrix}
+            a \\ b
+        \end{bmatrix} = 0\\
+        &\Rightarrow \begin{cases}
+            -i\left( 1 + \sqrt{2} \right) a + b = 0 \\
+            -a + i\left( 1 - \sqrt{2} \right)b = 0
+        \end{cases} \\
+        &\Rightarrow
+        \begin{cases}
+            a = 1 \\
+            b = i\left( 1 + \sqrt{2} \right)
+        \end{cases} \\
+        &\Rightarrow \ket{u_1} = \begin{bmatrix}
+            1 \\ i \left( 1 + \sqrt{2} \right)
+        \end{bmatrix}
+    \end{align*}
+    \item Với $\lambda_2$: $\left( U - \lambda_2 I \right) \ket{u_2} = 0$
+    \begin{align*}
+        &\Rightarrow \frac{1}{2} \begin{bmatrix}
+            -i\left( 1 - \sqrt{2} \right) & 1 \\
+            -1 & i\left( 1 + \sqrt{2} \right)
+        \end{bmatrix}
+        \begin{bmatrix}
+            c \\ d
+        \end{bmatrix} = 0\\
+        &\Rightarrow \begin{cases}
+            -i\left( 1 - \sqrt{2} \right) c + d = 0 \\
+            -c + i\left( 1 + \sqrt{2} \right)d = 0
+        \end{cases} \\
+        &\Rightarrow
+        \begin{cases}
+            c = 1 \\
+            d = i\left( 1 - \sqrt{2} \right)
+        \end{cases} \\
+        &\Rightarrow \ket{u_2} = \begin{bmatrix}
+            1 \\ i \left( 1 - \sqrt{2} \right)
+        \end{bmatrix}
+    \end{align*}
+\end{itemize}
+
+Vậy $U$ tương ứng với phép quay quanh trục tạo bởi $\ket{u_1}, \ket{u_2}$ với góc $\theta = \theta_1 - \theta_2 = -\frac{\pi}{4} - \frac{\pi}{4} = -\frac{\pi}{2}$ trên mặt cầu Bloch.
