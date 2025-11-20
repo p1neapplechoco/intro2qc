@@ -65,3 +65,13 @@ Khi chỉ đo qubit 2, ta có:
 \end{itemize}
 
 \subsubsection{Phần c}
+
+Trạng thái ban đầu là $\ket{000}$ và trạng thái mục tiêu của ta là $\frac{1}{\sqrt{2}} \ket{000} + \frac{1}{\sqrt{2}}\ket{111}$, ta có mạch như sau:
+
+\begin{center}
+    \begin{quantikz}
+        \lstick{$q_0$} & \gate{H} & \ctrl{1} & \ctrl{2} && \rstick[3]{$\ket{GHZ}$} \qw \\
+        \lstick{$q_1$} & \qw & \targ{} & \qw && \qw \\
+        \lstick{$q_2$} & \qw & \qw & \targ{} && \qw
+    \end{quantikz}
+\end{center}
