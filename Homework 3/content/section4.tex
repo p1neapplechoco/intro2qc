@@ -1,0 +1,33 @@
+\section{Bài 4}
+
+\subsection{Đề bài}
+
+Nếu Alice và Bob chia sẻ cặp qubit ở trạng thái vướng không phải là $\ket{\Phi^+}$ mà là $\ket{\Phi^-}$ thì làm thế nào để thực hiện
+
+\begin{itemize}
+    \item[(a)] mã đậm đặc.
+    \item[(b)] dịch chuyển lượng tử. 
+\end{itemize}
+
+\subsection{Lời giải}
+\subsubsection{Phần a}
+
+Để thực hiện mã đậm đặc với trạng thái vướng $\ket{\Phi^-}$, ta có thể sử dụng một cổng Pauli $Z$ trên qubit 0 để chuyển đổi trạng thái vướng thành $\ket{\Phi^+}$, ta có mạch mới như sau:
+\begin{center}
+    \begin{quantikz}
+        \lstick{$b$} & \qw & \qw & \ctrl{2} \\
+        \lstick{$a$} & \qw & \qw & \qw & \ctrl{1} \\ 
+        \lstick[2]{$\ket{\Phi^-}$} & \qw & \gate{Z} & \gate{Z} & \gate{X} & \ctrl{1} & \gate{H} & \meter{} \qw & \rstick{$b$} \\
+        \qw & \qw & \qw & \qw & \qw & \targ{} & \qw & \meter{} \qw & \rstick{$a$}
+    \end{quantikz}
+\end{center}
+
+\subsubsection{Phần b}
+Để thực hiện dịch chuyển lượng tử với trạng thái vướng $\ket{\Phi^-}$, ta có thể sử dụng một cổng Pauli $Z$ trên qubit 1 để chuyển đổi trạng thái vướng thành $\ket{\Phi^+}$, ta có mạch mới như sau:
+\begin{center}
+    \begin{quantikz}
+        \lstick{$\ket{\psi}$} & \qw & \ctrl{1} & \gate{H} & \meter{} & \setwiretype{c} & & \ctrl{2} \\
+        \lstick[2]{$\ket{\Phi^-}$} & \qw & \targ{} & \qw & \meter{} & \setwiretype{c} & \ctrl{1} \\
+        \qw & \qw & \gate{Z} & \qw & \qw & \qw & \gate{X} & \gate{Z} & \qw & \rstick{$\ket{\psi}$}
+    \end{quantikz}
+\end{center}

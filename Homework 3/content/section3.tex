@@ -1,0 +1,56 @@
+\section{Bài 3}
+
+\subsection{Đề bài}
+
+Thiết kế mạch giúp sao chép trạng thái lượng tử $\ket{\Phi^{+}}$. Kiểm tra kết quả trên thư viện Qiskit.
+
+\subsection{Lời giải}
+Ta có:
+\[
+\ket{\Psi^{+}} = \frac{1}{\sqrt{2}} \left( \ket{00} + \ket{11} \right)
+\]
+Để sao chép trạng thái lượng tử $\ket{\Phi^{+}}$, ta sử dụng mạch lượng tử sau
+\begin{center}
+    \begin{quantikz}
+        \lstick{$q_0$} & \gate{H} & \ctrl{1} & \qw \\
+        \lstick{$q_1$} & \qw & \targ{} & \qw \\
+        \lstick{$q_2$} & \gate{H} & \ctrl{1} & \qw \\
+        \lstick{$q_3$} & \qw & \targ{} & \qw \\
+    \end{quantikz}
+\end{center}
+
+Kết qua sau khi thực hiện mạch trên với trạng thái ban đầu $\ket{0000}$ là:
+\[\frac{1}{2} \left( \ket{0000} + \ket{0011} + \ket{1100} + \ket{1111} \right) = \ket{\Phi^{+}} \otimes \ket{\Phi^{+}}
+\]
+
+Kiểm tra kết quả trên Qiskit:
+\begin{itemize}
+    \item Tạo mạch lượng tử:
+\begin{lstlisting}[language=python]
+from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(4)
+
+qc.h(0)
+qc.cx(0, 1)
+qc.h(2)
+qc.cx(2, 3)
+\end{lstlisting}
+
+    \item Kiểm tra kết quả đầu ra:
+\begin{lstlisting}[language=python]
+from qiskit.quantum_info import Statevector
+
+sv = Statevector.from_label("0000").evolve(qc)
+print(sv)
+\end{lstlisting}
+    \item Kết quả in ra:
+\begin{lstlisting}
+Statevector([0.5+0.j, 0. +0.j, 0. +0.j, 0.5+0.j, 0. +0.j, 0. +0.j, 0. +0.j,
+             0. +0.j, 0. +0.j, 0. +0.j, 0. +0.j, 0. +0.j, 0.5+0.j, 0. +0.j,
+             0. +0.j, 0.5+0.j],
+            dims=(2, 2, 2, 2))
+\end{lstlisting}
+\end{itemize}
+
+Vậy kết quả thu được trên thư viện Qiskit giống với kết quả phân tích ở trên.

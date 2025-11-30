@@ -1,0 +1,71 @@
+\section{Bài 1}
+
+\subsection{Đề bài}
+
+Cho biết đầu ra của mạch sau
+
+\begin{center}
+    \begin{quantikz}
+        \qw & \qw & \targ{} & \qw \\
+        \qw & \gate{H} & \ctrl{-1} & \qw \
+    \end{quantikz}
+\end{center}
+
+khi đầu vào là các trạng thái của cơ sở tính toán. Kiểm tra kết quả trên thư viện Qiskit.
+
+\subsection{Lời giải}
+
+\begin{center}
+    \begin{quantikz}
+        \lstick{$q_0$} & \qw & \qw & \targ{} & \qw \\
+        \lstick{$q_1$} & \qw & \gate{H} & \ctrl{-1} & \qw \
+    \end{quantikz}
+\end{center}
+
+\begin{itemize}
+    \item Trạng thái $\ket{00}$ trở thành $\frac{1}{\sqrt{2}}\left(\ket{00} + \ket{11}\right)$.
+    \item Trạng thái $\ket{01}$ trở thành $\frac{1}{\sqrt{2}}\left(\ket{01} + \ket{10}\right)$.
+    \item Trạng thái $\ket{10}$ trở thành $\frac{1}{\sqrt{2}}\left(\ket{00} - \ket{11}\right)$.
+    \item Trạng thái $\ket{11}$ trở thành $\frac{1}{\sqrt{2}}\left(\ket{01} - \ket{10}\right)$.
+\end{itemize}
+
+\textbf{Kiểm tra trên Qiskit}
+
+\begin{itemize}
+    \item Vẽ mạch trên Qiskit:
+\begin{lstlisting}[language=python]
+from qiskit import QuantumCircuit
+
+qc = QuantumCircuit(2)
+qc.h(1)
+qc.cx(1, 0)
+qc.draw("mpl")
+\end{lstlisting}
+
+    \item Kiểm tra kết quả đầu ra:
+\begin{lstlisting}[language=python]
+from qiskit.quantum_info import Statevector
+
+for s in ["00", "01", "10", "11"]:
+    sv = Statevector.from_label(s).evolve(qc)
+    print(f"|{s}> -> {sv}")
+\end{lstlisting}
+
+    \item Kết quả in ra:
+\begin{lstlisting}
+|00> -> Statevector([0.70710678+0.j, 0.        +0.j, 0.        +0.j,
+             0.70710678+0.j],
+            dims=(2, 2))
+|01> -> Statevector([0.        +0.j, 0.70710678+0.j, 0.70710678+0.j,
+             0.        +0.j],
+            dims=(2, 2))
+|10> -> Statevector([ 0.70710678+0.j,  0.        +0.j,  0.        +0.j,
+             -0.70710678+0.j],
+            dims=(2, 2))
+|11> -> Statevector([ 0.        +0.j,  0.70710678+0.j, -0.70710678+0.j,
+              0.        +0.j],
+            dims=(2, 2))
+\end{lstlisting}
+\end{itemize}
+
+Vậy kết quả thu được trên thư viện Qiskit giống với kết quả phân tích ở trên.

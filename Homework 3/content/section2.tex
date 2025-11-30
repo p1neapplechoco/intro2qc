@@ -1,0 +1,149 @@
+\section{Bài 2}
+
+\subsection{Đề bài}
+
+Cho phép toán logic $f \ : \ \mathbb{B}^3 \rightarrow \mathbb{B}^3$ biến 3 bit đầu vào $ABC$ thành 3 bit đầu ra $DEF$ được xác định bởi bảng chân trị sau
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ c c c | c c c}
+    \hline
+    $A$ & $B$ & $C$ & $D$ & $E$ & $F$ \\
+    \hline
+    0 & 0 & 0 & 1 & 0 & 0 \\
+    0 & 0 & 1 & 1 & 0 & 1 \\
+    0 & 1 & 0 & 1 & 1 & 0 \\
+    0 & 1 & 1 & 1 & 1 & 1 \\
+    1 & 0 & 0 & 0 & 1 & 0 \\
+    1 & 0 & 1 & 0 & 0 & 1 \\ 
+    1 & 1 & 0 & 0 & 1 & 1 \\
+    1 & 1 & 1 & 0 & 0 & 0 \\
+    \hline
+\end{tabular}
+\end{table}
+
+\begin{itemize}
+    \item[(a)] Cho thấy $f$ khả nghịch.
+    \item[(b)] Thiết kế mạch logic (và đơn giản mạch) cho $f$.
+    \item[(c)] Chuyển mạch ở Câu (b) thành mạch lượng tử với chỉ 3 qubit vào (chứa $A, B, C$) và 3 qubit ra (chứa $D, E, F$), có thể dùng thêm các qubit phụ trợ nhưng các qubit này phải được xoá về $\ket{0}$.
+    \item[(d)] Cho biết kết quả chạy ở mạch Câu (c) với trạng thái đầu vào 3 qubit là
+\[
+\ket{\psi} = \frac{1}{\sqrt{3}} \left( \ket{000} + \ket{100} + \ket{111} \right).
+\]  
+\end{itemize}
+
+\subsection{Lời giải}
+
+\subsubsection{Phần a}
+
+Ta cần chứng minh $f$ là một song ảnh, từ bảng chân trị ta có:
+\begin{itemize}
+    \item $f(000) = 100$
+    \item $f(001) = 101$
+    \item $f(010) = 110$
+    \item $f(011) = 111$
+    \item $f(100) = 010$
+    \item $f(101) = 001$
+    \item $f(110) = 011$
+    \item $f(111) = 000$
+\end{itemize}
+Như vậy, với mỗi đầu ra $DEF$ ta tìm được một và chỉ một đầu vào $ABC$ tương ứng, do đó $f$ là một song ảnh $\Rightarrow$ $f$ khả nghịch.
+
+\subsubsection{Phần b}
+
+Xét $D$, ta có:
+\begin{center}
+    \begin{karnaugh-map}[4][2][1][$C$][$B$][$A$]
+        \minterms{0, 1, 2, 3}
+        \implicant{0}{2}
+    \end{karnaugh-map}
+\end{center}
+\[
+\Rightarrow D = \overline{A}
+\]
+Xét $E$, ta có:
+\begin{center}
+    \begin{karnaugh-map}[4][2][1][$C$][$B$][$A$]
+        \minterms{2, 3, 4, 6}
+        \implicant{3}{2}
+        \implicantedge{4}{4}{6}{6}
+    \end{karnaugh-map}
+\end{center}
+\[
+\Rightarrow E = A\overline{C} + \overline{A}B
+\]
+Xét $F$, ta có:
+\begin{center}
+    \begin{karnaugh-map}[4][2][1][$C$][$B$][$A$]
+        \minterms{1, 3, 5, 6}
+        \implicant{1}{3}
+        \implicant{1}{5}
+        \implicant{6}{6}
+    \end{karnaugh-map}
+\end{center}
+\[
+\Rightarrow F = \overline{A}C + \overline{B}C + AB\overline{C} = C \left( \overline{A} + \overline{B} \right) + \overline{C}AB = C \overline{AB} + \overline{C}AB = C \oplus AB
+\]
+Từ các biểu thức trên, ta có mạch logic như sau:
+
+\begin{center}
+    \begin{circuitikz}
+        \draw (0, 8) node[left] (A) {$A$};
+        \draw (0, 5) node[left] (B) {$B$};
+        \draw (0, 2) node[left] (C) {$C$};
+
+        \node[not port] (notA) at (4, 8) {};
+        \node[not port] (notC) at (4, 3.5) {};
+
+        \node[and port] (andE1) at (8, 6.5) {};
+        \node[and port] (andE2) at (8, 4.5) {};
+        \node[and port] (andF)  at (8, 1.5) {};
+        \node[or port] (orE) at (12, 5.5) {};
+        \node[xor port] (xorF) at (12, 0.5) {};
+
+        \draw (A) -- (notA.in);
+        \draw (notA.out) -- ++(1.5,0) node[right] {$D$};
+
+        \draw (1.5, 8) node[circ] (dotA) {}; 
+        \draw (1.5, 5) node[circ] (dotB) {}; 
+        \draw (1.5, 2) node[circ] (dotC) {}; 
+
+        \draw (notA.out) ++(1,0) node[circ] (dotNotA) {} |- (andE1.in 1);
+        \draw (B) -- (dotB) |- (andE1.in 2);
+        \draw (dotA) |- (andE2.in 1);
+        \draw (C) -- (dotC) |- (notC.in);
+        \draw (notC.out) -| (andE2.in 2);
+
+        \draw (andE1.out) -| (orE.in 1);
+        \draw (andE2.out) -| (orE.in 2);
+        \draw (orE.out) -- ++(1,0) node[right] {$E$};
+        \draw (dotA) |- (andF.in 1);
+        \draw (dotB) |- (andF.in 2);
+        \draw (andF.out) -| (xorF.in 1);
+        \draw (dotC) |- (xorF.in 2);
+        \draw (xorF.out) -- ++(1,0) node[right] {$F$};
+
+    \end{circuitikz}
+\end{center}
+
+\subsubsection{Phần c}
+
+Ta có mạch lượng tử sau tương ứng với mạch logic ở phần (b):
+
+\begin{center}
+    \begin{quantikz}
+        \lstick{$A$} & \ctrl{1} & \ctrl{2} & \ctrl{1} & \gate{X} & \rstick{$D$} \qw \\
+        \lstick{$B$} & \ctrl{1} & \targ{}  & \targ{}  & \qw      & \rstick{$E$} \qw \\
+        \lstick{$C$} & \targ{}  & \ctrl{-1}& \qw      & \qw      & \rstick{$F$} \qw
+    \end{quantikz}
+\end{center}
+
+\subsubsection{Phần d}
+Với trạng thái đầu vào
+\[
+\ket{\psi} = \frac{1}{\sqrt{3}} \left( \ket{000} + \ket{100} + \ket{111} \right)
+\]
+ta áp dụng mạch lượng tử ở phần (c) lên trạng thái đầu vào $\ket{\psi}$ ta đựợc trạng thái đầu ra sau
+\[
+\ket{\psi'} = \frac{1}{\sqrt{3}} \left( \ket{100} + \ket{010} + \ket{000} \right)
+\]
