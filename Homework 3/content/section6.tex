@@ -1,0 +1,52 @@
+\section{Bài 6}
+
+\subsection{Đề bài}
+
+Vẽ mạch cụ thể và kiểm tra tính đúng đắn của thuật toán Deutsch-Jozsa cho các trường hợp hàm $f_1$ và $f_2$ ở bảng sau
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{cc|c|c}
+        \hline
+        $x_1$ & $x_0$ & $f_1$ & $f_2$ \\
+        \hline
+        0 & 0 & 1 & 0 \\
+        0 & 1 & 1 & 0 \\
+        1 & 0 & 1 & 1 \\
+        1 & 1 & 1 & 1 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\subsection{Lời giải}
+
+Ta xây dựng hàm lượng tử $U_{f_1}$ và $U_{f_2}$ tương ứng với hai hàm $f_1$ và $f_2$ như sau:
+\begin{itemize}
+    \item Hàm $f_1$ là hàm hằng, ta có thể xây dựng $U_{f_1}$ bằng cách áp dụng cổng X lên qubit thứ 2 (qubit mục tiêu).
+    \item Hàm $f_2$ là hàm cân bằng, ta có thể xây dựng $U_{f_2}$ bằng cách áp dụng cổng CNOT với qubit thứ 1 làm điều khiển và qubit thứ 2 làm mục tiêu.
+\end{itemize}
+
+Mạch Deutsch-Jozsa cho $f_1$: 
+\begin{center}
+    \begin{quantikz}
+    \lstick{$\ket{0} (x_1)$} & \gate{H} & \qw       & \gate{H} & \meter{} & \rstick{$\ket{0}$} \qw \\
+    \lstick{$\ket{0} (x_0)$} & \gate{H} & \qw       & \gate{H} & \meter{} & \rstick{$\ket{0}$} \qw \\
+    \lstick{$\ket{1} (y)$}   & \gate{H} & \gate{X}  & \qw      & \qw      & \qw
+    \end{quantikz}
+\end{center}
+
+Mạch Deutsch-Jozsa cho $f_2$:
+\begin{center}
+    \begin{quantikz}
+        \lstick{$\ket{0} (x_1)$} & \gate{H} & \ctrl{2} & \gate{H} & \meter{} & \rstick{$\ket{1}$} \qw \\
+        \lstick{$\ket{0} (x_0)$} & \gate{H} & \qw      & \gate{H} & \meter{} & \rstick{$\ket{0}$} \qw \\
+        \lstick{$\ket{1} (y)$}   & \gate{H} & \targ{}  & \qw      & \qw      & \qw
+    \end{quantikz}
+\end{center}
+
+Sau khi thực hiện thuật toán Deutsch-Jozsa, ta đo hai qubit đầu tiên. Kết quả đo được sẽ là:
+\begin{itemize}
+    \item Đối với hàm $f_1$ (hàm hằng), ta sẽ luôn đo được kết quả $\ket{00}$.
+    \item Đối với hàm $f_2$ (hàm cân bằng), ta sẽ đo được kết quả khác $\ket{10}$.
+\end{itemize}
+

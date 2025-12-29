@@ -2,7 +2,7 @@
 
 \subsection{Đề bài}
 
-Cho $f : \mathbb{B}^2 \rightarrow \mathbb{B}^2$ với
+Cho $f : \mathbb{B}^2 \rightarrow \mathbb{B}$ với
 \[
 f(x,y) = x \oplus y, \quad x,y \in \mathbb{B}.
 \]
@@ -12,3 +12,93 @@ f(x,y) = x \oplus y, \quad x,y \in \mathbb{B}.
     \item[(c)] Cho biết hoạt động của $U_f$, $Z_f$ trên trạng thái đầu vào là $\ket{+}^{\otimes 2}$.
     \item[(d)] Kiểm tra kết quả của Câu (c) trên thư viện Qiskit. 
 \end{itemize}   
+
+\subsection{Lời giải}
+
+\subsubsection{Phần a}
+Oracle lượng tử $U_f$ hoạt động như sau:
+\[
+U_f \ket{x,y} \ket{z} = \ket{x, y} \ket{z \oplus f(x,y)} = \ket{x, y} \ket{z \oplus x \oplus y}.
+\]
+
+Để thực hiện phép toán này, ta sử dụng hai cổng CNOT. Cụ thể:
+
+\begin{itemize}
+    \item CNOT(x, z) thực hiện $\ket{z} \rightarrow \ket{z \oplus x}$.
+    \item CNOT(y, z) thực hiện $\ket{z \oplus x} \rightarrow \ket{z \oplus x \oplus y}$.
+\end{itemize}
+
+Vậy $U_f = \text{CNOT}(y, z) \cdot \text{CNOT}(x, z)$.
+
+\subsubsection{Phần b}
+
+Oracle pha $Z_f$ hoạt động như sau:
+\[
+Z_f \ket{x,y} = (-1)^{f(x,y)} \ket{x,y} = (-1)^{x \oplus y} \ket{x,y}.
+\]
+
+Để thực hiện phép toán này, ta sử dụng hai cổng Z. Cụ thể:
+\begin{itemize}
+    \item Z(x) thực hiện $\ket{x} \rightarrow (-1)^x \ket{x}$.
+    \item Z(y) thực hiện $\ket{y} \rightarrow (-1)^y \ket{y}$.
+\end{itemize}
+
+Vậy $Z_f = Z(x) \cdot Z(y)$.
+
+\subsubsection{Phần c}
+Trạng thái đầu vào là $\ket{+}^{\otimes 2} = \frac{1}{2}(\ket{00} + \ket{01} + \ket{10} + \ket{11})$.
+
+Áp dụng $U_f$ lên trạng thái này:
+\begin{align*}
+U_f \ket{+}^{\otimes 2} \ket{0} &= U_f \left( \frac{1}{2}(\ket{00} + \ket{01} + \ket{10} + \ket{11}) \ket{0} \right) \\
+&= \frac{1}{2}(\ket{00}\ket{0} + \ket{01}\ket{1} + \ket{10}\ket{1} + \ket{11}\ket{0}) \\
+&= \frac{1}{2}(\ket{00}\ket{0} + \ket{01}\ket{1} + \ket{10}\ket{1} + \ket{11}\ket{0}).
+\end{align*}
+Áp dụng $Z_f$ lên trạng thái này:
+\begin{align*}
+Z_f \ket{+}^{\otimes 2} &= Z_f \left( \frac{1}{2}(\ket{00} + \ket{01} + \ket{10} + \ket{11}) \right) \\
+&= \frac{1}{2}(\ket{00} - \ket{01} - \ket{10} + \ket{11}) \\
+&= \frac{1}{2}(\ket{00} + \ket{11} - \ket{01} - \ket{10}).
+\end{align*}
+
+\subsubsection{Phần d}
+
+Kiểm tra kết quả trên Qiskit như sau:
+\begin{lstlisting}[language=Python]
+    
+from qiskit import QuantumCircuit
+from qiskit.quantum_info import Statevector
+from IPython.display import display
+
+
+def Uf(circuit, x, y, z):
+    circuit.cx(x, z)
+    circuit.cx(y, z)
+
+def Zf(circuit, x, y):
+    circuit.z(x)
+    circuit.z(y)
+
+
+qc_z = QuantumCircuit(2)
+qc_z.h([0, 1])
+
+Zf(qc_z, 0, 1)
+
+sv_z = Statevector.from_instruction(qc_z)
+display(sv_z.draw("latex"))
+
+
+qc_u = QuantumCircuit(3)
+qc_u.h([0, 1])
+qc_u.x(2)
+qc_u.h(2)
+
+Uf(qc_u, 0, 1, 2)
+
+sv_u = Statevector.from_instruction(qc_u)
+display(sv_u.draw("latex"))
+\end{lstlisting}
+
+
+Kết quả thu được từ Qiskit trùng khớp với kết quả lý thuyết ở phần (c).
