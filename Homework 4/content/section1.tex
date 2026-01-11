@@ -1,2 +1,161 @@
 \section{Bài 1}
 
+\subsection{Đề bài}
+
+Thiết kế mạch 3 qubit để cài đặt $R_u$, phép toán phản xạ quanh trục $\ket{u}$, với
+\begin{itemize}
+    \item[(a)] $\ket{u} = \ket{111}$,
+    \item[(b)] $\ket{u} = \ket{000}$,
+    \item[(c)] $\ket{u} = \ket{+}^{\otimes 3}$,
+    \item[(d)] $\ket{u} = \ket{-}^{\otimes 3}$.  
+\end{itemize}
+
+Kiểm tra kết quả trên thư viện Qiskit.
+
+\subsection{Lời giải}
+
+\subsubsection{Phần a}
+
+Mạch lượng tử để cài đặt $R_u$, phép toán phản xạ quanh trục $\ket{u}$ với $\ket{u} = \ket{111}$ như sau:
+
+\begin{center}
+    \begin{quantikz}
+        \lstick{\ket{q_0}} & \ctrl{1} & \qw & \qw \\
+        \lstick{\ket{q_1}} & \ctrl{1} & \qw & \qw \\
+        \lstick{\ket{q_2}} & \qw & \gate{Z} & \qw
+    \end{quantikz}
+\end{center}
+
+Kiểm tra mạch trên Qiskit như sau:
+\begin{lstlisting}[language=Python]
+print("(a) |u> = |111>")
+qc_a = QuantumCircuit(3)
+qc_a.mcp(np.pi, [0, 1], 2)
+
+input_a = Statevector.from_label("111")
+output_a = input_a.evolve(qc_a)
+
+print("\nResult:")
+print(output_a.draw("text"))
+\end{lstlisting}
+Kết quả thu được:
+\begin{lstlisting}
+(a) |u> = |111>
+
+Result:
+[ 0.+0.j, 0.+0.j, 0.+0.j, 0.+0.j, 0.+0.j, 0.+0.j, 0.+0.j,-1.+0.j]
+\end{lstlisting}
+Hoàn toàn đúng với mong đợi.
+
+\subsubsection{Phần b}
+
+Mạch lượng tử để cài đặt $R_u$, phép toán phản xạ quanh trục $\ket{u}$ với $\ket{u} = \ket{000}$ như sau:
+
+\begin{center}
+    \begin{quantikz}
+        \lstick{\ket{q_0}} & \gate{X} & \ctrl{1} & \qw & \gate{X} & \qw \\
+        \lstick{\ket{q_1}} & \gate{X} & \ctrl{1} & \qw & \gate{X} & \qw \\
+        \lstick{\ket{q_2}} & \gate{X} & \qw & \gate{Z} & \gate{X} & \qw
+    \end{quantikz}
+\end{center}
+
+Kiểm tra mạch trên Qiskit như sau:
+\begin{lstlisting}[language=Python]
+print("\n(b) |u> = |000>")
+qc_b = QuantumCircuit(3)
+qc_b.x([0, 1, 2])
+qc_b.mcp(np.pi, [0, 1], 2)
+qc_b.x([0, 1, 2])
+
+input_b = Statevector.from_label("000")
+output_b = input_b.evolve(qc_b)
+
+print("\nResult:")
+print(output_b.draw("text"))
+\end{lstlisting}
+Kết quả thu được:
+\begin{lstlisting}
+(b) |u> = |000>
+
+Result:
+[-1.+0.j, 0.+0.j, 0.+0.j, 0.+0.j, 0.+0.j, 0.+0.j, 0.+0.j, 0.+0.j]
+\end{lstlisting}
+Hoàn toàn đúng với mong đợi.
+
+\subsubsection{Phần c}
+
+Mạch lượng tử để cài đặt $R_u$, phép toán phản xạ quanh trục $\ket{u}$ với $\ket{u} = \ket{+}^{\otimes 3}$ như sau:
+
+\begin{center}
+    \begin{quantikz}
+        \lstick{\ket{q_0}} & \gate{H} & \gate{X} & \ctrl{1} & \qw & \gate{X} & \gate{H} & \qw \\
+        \lstick{\ket{q_1}} & \gate{H} & \gate{X} & \ctrl{1} & \qw & \gate{X} & \gate{H} & \qw \\
+        \lstick{\ket{q_2}} & \gate{H} & \gate{X} & \qw & \gate{Z} & \gate{X} & \gate{H} & \qw
+    \end{quantikz}
+\end{center}
+
+Kiểm tra mạch trên Qiskit như sau:
+\begin{lstlisting}[language=Python]
+print("\n(c) |u> = |+++>")
+qc_c = QuantumCircuit(3)
+qc_c.h([0, 1, 2])
+qc_c.x([0, 1, 2])
+qc_c.mcp(np.pi, [0, 1], 2)  # CCZ
+qc_c.x([0, 1, 2])
+qc_c.h([0, 1, 2])
+
+input_c = Statevector.from_label("+++")
+output_c = input_c.evolve(qc_c)
+
+print("\nResult:")
+print(output_c.draw("text"))
+\end{lstlisting}
+Kết quả thu được:
+\begin{lstlisting}
+(c) |u> = |+++>
+
+Result:
+[-0.35355339-5.4473525e-34j,-0.35355339-5.4473525e-34j,
+ -0.35355339-5.4473525e-34j,-0.35355339-5.4473525e-34j,
+ -0.35355339+5.4473525e-34j,-0.35355339+5.4473525e-34j,
+ -0.35355339+5.4473525e-34j,-0.35355339+5.4473525e-34j]
+\end{lstlisting}
+Hoàn toàn đúng với mong đợi.
+
+\subsubsection{Phần d}
+
+Mạch lượng tử để cài đặt $R_u$, phép toán phản xạ quanh trục $\ket{u}$ với $\ket{u} = \ket{-}^{\otimes 3}$ như sau:
+
+\begin{center}
+    \begin{quantikz}
+        \lstick{\ket{q_0}} & \gate{H} & \ctrl{1} & \qw & \gate{H} & \qw \\
+        \lstick{\ket{q_1}} & \gate{H} & \ctrl{1} & \qw & \gate{H} & \qw \\
+        \lstick{\ket{q_2}} & \gate{H} & \qw & \gate{Z} & \gate{H} & \qw
+    \end{quantikz}
+\end{center}
+
+Kiểm tra mạch trên Qiskit như sau:
+\begin{lstlisting}[language=Python]
+print("\n(d) |u> = |--->")
+qc_d = QuantumCircuit(3)
+qc_d.h([0, 1, 2])
+qc_d.mcp(np.pi, [0, 1], 2)  # CCZ
+qc_d.h([0, 1, 2])
+
+input_d = Statevector.from_label("---")
+output_d = input_d.evolve(qc_d)
+
+print("\nResult:")
+print(output_d.draw("text"))
+\end{lstlisting}
+Kết quả thu được:
+\begin{lstlisting}
+(d) |u> = |--->
+
+Result:
+[-0.35355339-5.4473525e-34j, 0.35355339+5.4473525e-34j,
+  0.35355339+5.4473525e-34j,-0.35355339-5.4473525e-34j,
+  0.35355339-5.4473525e-34j,-0.35355339+5.4473525e-34j,
+ -0.35355339+5.4473525e-34j, 0.35355339-5.4473525e-34j]
+\end{lstlisting}
+Hoàn toàn đúng với mong đợi.

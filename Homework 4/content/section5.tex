@@ -1,0 +1,158 @@
+\section{Bài 5}
+
+\subsection{Đề bài}
+
+Thiết kế mạch QFT 3 qubit. Tính toán từng bước để thấy mạch biến các vector cơ sở tính toán $\ket{j}$ thành các vector $\ket{\phi_j}$ tương ứng. Kiểm tra kết quả trên thư viện Qiskit.
+
+\subsection{Lời giải}
+
+Mạch QFT 3 qubit được thiết kế như sau:
+
+\begin{center}
+    \begin{quantikz}[slice all,remove end slices=1,slice titles=$\pi_{\col}$,slice style=blue,slice label style={inner sep=1pt,anchor=south}]
+        \lstick{$\ket{j_1}$} & \gate{H} & \gate{R_2} & \gate{R_3} & \qw & \qw & \qw & \swap{2} & \qw & \rstick{$\ket{\phi_1}$} \\
+        \lstick{$\ket{j_2}$} & \qw & \ctrl{-1} & \qw & \gate{H} & \gate{R_2} & \qw & \qw & \qw & \rstick{$\ket{\phi_2}$} \\
+        \lstick{$\ket{j_3}$} & \qw & \qw & \ctrl{-2} & \qw & \ctrl{-1} & \gate{H} & \swap{-2} & \qw & \rstick{$\ket{\phi_3}$} 
+    \end{quantikz}
+\end{center}
+
+Các bước biến đổi của mạch trên như sau:
+\begin{itemize}
+    \item $\pi_1 = (H \otimes I \otimes I) \ket{j_1 j_2 j_3} = \frac{1}{\sqrt{2}} \left( \ket{0} + e^{2\pi i 0.j_1} \ket{1} \right) \otimes \ket{j_2 j_3}$
+    
+    \item $\pi_2$ (sau cổng $CR_2$ điều khiển bởi $j_2$ lên qubit 1):
+    \[ \pi_2 = \frac{1}{\sqrt{2}} \left( \ket{0} + e^{2\pi i 0.j_1 j_2} \ket{1} \right) \otimes \ket{j_2 j_3} \]
+    
+    \item $\pi_3$ (sau cổng $CR_3$ điều khiển bởi $j_3$ lên qubit 1):
+    \[ \pi_3 = \frac{1}{\sqrt{2}} \left( \ket{0} + e^{2\pi i 0.j_1 j_2 j_3} \ket{1} \right) \otimes \ket{j_2 j_3} \]
+    
+    \item $\pi_4$ (sau cổng $H$ lên qubit 2):
+    \[ \pi_4 = \frac{1}{\sqrt{2}} \left( \ket{0} + e^{2\pi i 0.j_1 j_2 j_3} \ket{1} \right) \otimes \frac{1}{\sqrt{2}} \left( \ket{0} + e^{2\pi i 0.j_2} \ket{1} \right) \otimes \ket{j_3} \]
+    
+    \item $\pi_5$ (sau cổng $CR_2$ điều khiển bởi $j_3$ lên qubit 2):
+    \[ \pi_5 = \frac{1}{\sqrt{2}} \left( \ket{0} + e^{2\pi i 0.j_1 j_2 j_3} \ket{1} \right) \otimes \frac{1}{\sqrt{2}} \left( \ket{0} + e^{2\pi i 0.j_2 j_3} \ket{1} \right) \otimes \ket{j_3} \]
+    
+    \item $\pi_6$ (sau cổng $H$ lên qubit 3):
+    \[ \pi_6 = \frac{1}{2\sqrt{2}} \left( \ket{0} + e^{2\pi i 0.j_1 j_2 j_3} \ket{1} \right) \otimes \left( \ket{0} + e^{2\pi i 0.j_2 j_3} \ket{1} \right) \otimes \left( \ket{0} + e^{2\pi i 0.j_3} \ket{1} \right) \]
+    
+    \item $\pi_7$ (sau cổng SWAP giữa qubit 1 và 3):
+    \[ \pi_7 = \frac{1}{\sqrt{8}} \underbrace{\left( \ket{0} + e^{2\pi i 0.j_3} \ket{1} \right)}_{\ket{\phi_1}} \otimes \underbrace{\left( \ket{0} + e^{2\pi i 0.j_2 j_3} \ket{1} \right)}_{\ket{\phi_2}} \otimes \underbrace{\left( \ket{0} + e^{2\pi i 0.j_1 j_2 j_3} \ket{1} \right)}_{\ket{\phi_3}} \]
+\end{itemize}
+
+Kiểm tra mạch trên Qiskit như sau:
+\begin{lstlisting}[language=Python]
+def qft_3qubit(qc):
+    """Implement QFT for 3 qubits"""
+    # Apply H to qubit 0
+    qc.h(0)
+    # Controlled-R2 from qubit 1 to qubit 0
+    qc.cp(np.pi/2, 1, 0)
+    # Controlled-R3 from qubit 2 to qubit 0
+    qc.cp(np.pi/4, 2, 0)
+    
+    # Apply H to qubit 1
+    qc.h(1)
+    # Controlled-R2 from qubit 2 to qubit 1
+    qc.cp(np.pi/2, 2, 1)
+    
+    # Apply H to qubit 2
+    qc.h(2)
+    
+    # SWAP qubits 0 and 2
+    qc.swap(0, 2)
+
+# Test with different basis states
+test_states = ['000', '001', '010', '011', '100', '101', '110', '111']
+
+print("Testing QFT 3-qubit implementation:\n")
+for state in test_states:
+    qc = QuantumCircuit(3)
+    qft_3qubit(qc)
+    
+    input_state = Statevector.from_label(state)
+    output_state = input_state.evolve(qc)
+    
+    print(f"Input: |{state}>")
+    print(f"Output: {output_state.draw('text')}\n")
+
+# Compare with built-in QFT
+print("\nComparing with Qiskit built-in QFT:")
+qc_custom = QuantumCircuit(3)
+qft_3qubit(qc_custom)
+
+qc_builtin = QuantumCircuit(3)
+qc_builtin.append(QFT(3), range(3))
+
+# Test with |101> state
+test_input = Statevector.from_label("101")
+output_custom = test_input.evolve(qc_custom)
+output_builtin = test_input.evolve(qc_builtin)
+
+print("Input: |101>")
+print(f"Custom QFT: {output_custom.draw('text')}")
+print(f"Built-in QFT: {output_builtin.draw('text')}")
+\end{lstlisting}
+
+Kết quả thu được:
+
+\begin{lstlisting}
+Testing QFT 3-qubit implementation:
+
+Input: |000>
+Output: [0.35355339+0.j,0.35355339+0.j,0.35355339+0.j,0.35355339+0.j,
+ 0.35355339+0.j,0.35355339+0.j,0.35355339+0.j,0.35355339+0.j]
+
+Input: |001>
+Output: [ 0.35355339+0.j, 0.35355339+0.j, 0.35355339+0.j, 0.35355339+0.j,
+ -0.35355339+0.j,-0.35355339+0.j,-0.35355339+0.j,-0.35355339+0.j]
+
+Input: |010>
+Output: [ 3.53553391e-01+0.j        , 3.53553391e-01+0.j        ,
+ -3.53553391e-01+0.j        ,-3.53553391e-01+0.j        ,
+  2.16489014e-17+0.35355339j, 2.16489014e-17+0.35355339j,
+ -2.16489014e-17-0.35355339j,-2.16489014e-17-0.35355339j]
+
+Input: |011>
+Output: [ 3.53553391e-01+0.j        , 3.53553391e-01+0.j        ,
+ -3.53553391e-01+0.j        ,-3.53553391e-01+0.j        ,
+ -2.16489014e-17-0.35355339j,-2.16489014e-17-0.35355339j,
+  2.16489014e-17+0.35355339j, 2.16489014e-17+0.35355339j]
+
+Input: |100>
+Output: [ 3.53553391e-01+0.j        ,-3.53553391e-01+0.j        ,
+  2.16489014e-17+0.35355339j,-2.16489014e-17-0.35355339j,
+  2.50000000e-01+0.25j      ,-2.50000000e-01-0.25j      ,
+ -2.50000000e-01+0.25j      , 2.50000000e-01-0.25j      ]
+
+Input: |101>
+Output: [ 3.53553391e-01+0.j        ,-3.53553391e-01+0.j        ,
+  2.16489014e-17+0.35355339j,-2.16489014e-17-0.35355339j,
+ -2.50000000e-01-0.25j      , 2.50000000e-01+0.25j      ,
+  2.50000000e-01-0.25j      ,-2.50000000e-01+0.25j      ]
+
+Input: |110>
+Output: [ 3.53553391e-01+0.j        ,-3.53553391e-01+0.j        ,
+ -2.16489014e-17-0.35355339j, 2.16489014e-17+0.35355339j,
+ -2.50000000e-01+0.25j      , 2.50000000e-01-0.25j      ,
+  2.50000000e-01+0.25j      ,-2.50000000e-01-0.25j      ]
+
+Input: |111>
+Output: [ 3.53553391e-01+0.j        ,-3.53553391e-01+0.j        ,
+ -2.16489014e-17-0.35355339j, 2.16489014e-17+0.35355339j,
+  2.50000000e-01-0.25j      ,-2.50000000e-01+0.25j      ,
+ -2.50000000e-01-0.25j      , 2.50000000e-01+0.25j      ]
+
+
+Comparing with Qiskit built-in QFT:
+Input: |101>
+Custom QFT: [ 3.53553391e-01+0.j        ,-3.53553391e-01+0.j        ,
+  2.16489014e-17+0.35355339j,-2.16489014e-17-0.35355339j,
+ -2.50000000e-01-0.25j      , 2.50000000e-01+0.25j      ,
+  2.50000000e-01-0.25j      ,-2.50000000e-01+0.25j      ]
+Built-in QFT: [ 3.53553391e-01+0.j        ,-2.50000000e-01-0.25j      ,
+  2.16489014e-17+0.35355339j, 2.50000000e-01-0.25j      ,
+ -3.53553391e-01+0.j        , 2.50000000e-01+0.25j      ,
+ -2.16489014e-17-0.35355339j,-2.50000000e-01+0.25j      ]
+\end{lstlisting}
+
+Kết quả cho thấy mạch QFT tự thiết kế hoạt động đúng và cho kết quả tương đương với mạch QFT tích hợp sẵn trong Qiskit, chỉ khác về thứ tự các qubit do cổng SWAP ở cuối mạch.

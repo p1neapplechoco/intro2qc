@@ -1,0 +1,19 @@
+\section{Bài 2}
+
+\subsection{Đề bài}
+
+Cần sửa đổi giao thức E91 như thế nào nếu các cặp qubit ở trạng thái vướng
+\[
+\ket{\Psi^+} = \frac{1}{\sqrt{2}}\left( \ket{01} + \ket{10} \right)
+\]
+thay vì $\ket{\Phi^+}$.
+
+\subsection{Lời giải}
+
+Do tính chất của trạng thái vướng $\ket{\Psi^+}$ khác với trạng thái vướng $\ket{\Phi^+}$, nên cần thực hiện một số sửa đổi trong giao thức E91 để đảm bảo tính bảo mật và hiệu quả của quá trình truyền thông lượng tử. Cụ thể:
+
+\begin{itemize}
+    \item Khi sử dụng trạng thái vướng $\ket{\Phi^+}$, nếu người thứ nhất đo qubit của mình trong cơ sở Z (cơ sở chuẩn) và người thứ hai cũng đo trong cơ sở Z, họ sẽ nhận được kết quả hoàn toàn tương quan (cùng là 0 hoặc cùng là 1). Tuy nhiên, với trạng thái vướng $\ket{\Psi^+}$, nếu cả hai người đo trong cơ sở Z, họ sẽ nhận được kết quả hoàn toàn trái ngược nhau (một người nhận 0, người kia nhận 1, hoặc ngược lại).
+\end{itemize}
+
+Vì vậy, để sửa đổi giao thức E91 khi sử dụng trạng thái vướng $\ket{\Psi^+}$, cần thực hiện việc đảo ngược kết quả của một trong hai người để đảm bảo rằng họ có cùng một bit khóa. Cụ thể, nếu cả hai người đo trong cơ sở Z, người thứ hai sẽ đảo ngược kết quả của mình (0 thành 1 và 1 thành 0).
